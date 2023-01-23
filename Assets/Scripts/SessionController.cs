@@ -20,7 +20,7 @@ public class SessionController : MonoBehaviour {
     void Start()
     {
         //---- Temp Code ----
-        roundCtrl = new RoundController(board, gameModes[0], steeringModes); 
+        roundCtrl = new RoundController(board, gameModes[0], steeringModes, startMovement); 
         //-------------------
     }
 
@@ -69,5 +69,12 @@ public class SessionController : MonoBehaviour {
         if (roundCtrl != null) {
             roundCtrl.moveLeft();
         }
+    }
+
+    /**
+        Used by steeringmodes to run smooth movements
+    */
+    public void startMovement(IEnumerator movementTracker) {
+        StartCoroutine(movementTracker);
     }
 }

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,10 +8,9 @@ public class RoundController {
     GameMode gameMode;
     string[] steeringModes;
     SteeringMode currentSM;
+    Action<IEnumerator> startMovement;
 
-    public RoundController(GameObject gameBoard, string gameModeString, string[] enabledSteeringModes) {
-        //board = gameBoard;
-
+    public RoundController(GameObject gameBoard, string gameModeString, string[] enabledSteeringModes, Action<IEnumerator> startMovementFunction) {
         switch(gameModeString) { 
             case "BalanceMode":
                 gameMode = new BalanceMode();
@@ -25,7 +25,9 @@ public class RoundController {
                 break;
         }
 
-        board = GameObject.Instantiate(gameMode.getBoardPrefab(), new Vector3(0, 0, 0), Quaternion.identity); //as GameObject;
+        board = GameObject.Instantiate(gameMode.getBoardPrefab(), new Vector3(0, 0, 0), Quaternion.identity);
+
+        startMovement = startMovementFunction;
     }
 
     // Update is called once per frame
@@ -42,14 +44,14 @@ public class RoundController {
         Moves the board right according to current steering mode
     */
     public void moveRight() {
-        currentSM.moveRight(board);
+        currentSM.moveRight(board, startMovement);
     }
 
     /**
         Moves the board left according to current steering mode
     */
     public void moveLeft() {
-        currentSM.moveLeft(board);
+        currentSM.moveLeft(board, startMovement);
     }
 
 }
