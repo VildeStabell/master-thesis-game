@@ -5,14 +5,21 @@ using UnityEngine;
 
 public class AngleRotation : SteeringMode {
     const string NAME = "Angle rotation";
-    private bool rotating = false;
+    int[] angles = {30, 45, 60, 90};
+    bool rotating = false;
+    int chosenAngle;
+
+    public AngleRotation() {
+        System.Random rnd = new System.Random();
+        chosenAngle = angles[rnd.Next(0, angles.Length)];
+    }
 
     /**
         Move the board towards the right
     */
     public override void moveRight(GameObject board, Action<IEnumerator> startMovement) {
         if(!rotating) {
-            startMovement(Rotate(new Vector3(0, 90, 0), board));
+            startMovement(Rotate(new Vector3(0, chosenAngle, 0), board));
         }
     }
 
@@ -21,7 +28,7 @@ public class AngleRotation : SteeringMode {
     */
     public override void moveLeft(GameObject board, Action<IEnumerator> startMovement){
         if(!rotating) {
-            startMovement(Rotate(new Vector3(0, -90, 0), board));
+            startMovement(Rotate(new Vector3(0, -chosenAngle, 0), board));
         }
     }
 
@@ -44,7 +51,6 @@ public class AngleRotation : SteeringMode {
 
         for(float t = 0 ; t < duration ; t+= Time.deltaTime) {
             board.transform.rotation = Quaternion.Lerp(startRotation, endRotation, t / duration);
-            Debug.Log("rotate loop. t=" + t);
             yield return null;
         }
 
