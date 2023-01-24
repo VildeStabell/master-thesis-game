@@ -20,6 +20,3 @@ public class BalanceMode : GameMode {
         return NAME;
     }
 }
-
-
-// "Prefabs/BalanceBoard.prefab"
