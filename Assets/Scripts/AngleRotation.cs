@@ -43,7 +43,7 @@ public class AngleRotation : SteeringMode {
         Rotate a set amount of degrees over time
     */
     private IEnumerator Rotate(Vector3 angles, GameObject board) {
-        float duration = 1.0f;
+        float duration = (Math.Abs(angles.y)/90)*1.0f;
         rotating = true;
 
         Quaternion startRotation = board.transform.rotation;
