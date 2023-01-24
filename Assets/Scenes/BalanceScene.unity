@@ -218,6 +218,7 @@ GameObject:
   - component: {fileID: 502869817}
   - component: {fileID: 502869816}
   - component: {fileID: 502869818}
+  - component: {fileID: 502869819}
   m_Layer: 0
   m_Name: SessionController
   m_TagString: Untagged
@@ -237,8 +238,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0482e190ed3fc78448775ae9273911ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameModes:
-  - BalanceMode
+  gameModes: 00000000
   steeringModes:
   - AngleRotation
   eqCad: 10
@@ -286,8 +286,8 @@ MonoBehaviour:
   m_ActionEvents:
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 502869816}
-        m_TargetAssemblyTypeName: SessionController, Assembly-CSharp
+      - m_Target: {fileID: 502869819}
+        m_TargetAssemblyTypeName: RoundController, Assembly-CSharp
         m_MethodName: moveRight
         m_Mode: 1
         m_Arguments:
@@ -342,8 +342,8 @@ MonoBehaviour:
     m_ActionName: UI/TrackedDeviceOrientation
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 502869816}
-        m_TargetAssemblyTypeName: SessionController, Assembly-CSharp
+      - m_Target: {fileID: 502869819}
+        m_TargetAssemblyTypeName: RoundController, Assembly-CSharp
         m_MethodName: moveLeft
         m_Mode: 1
         m_Arguments:
@@ -361,6 +361,19 @@ MonoBehaviour:
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &502869819
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 502869815}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de0ba4302e467e847ae8e525012058a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameModeType: 0
 --- !u!1 &602597585
 GameObject:
   m_ObjectHideFlags: 0

@@ -3,43 +3,42 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RoundController {
-    GameObject board;
-    GameMode gameMode;
-    string[] steeringModes;
-    SteeringMode currentSM;
-    Action<IEnumerator> startMovement;
+public class RoundController : MonoBehaviour {
+    public GameModeEnum gameModeType;
 
-    public RoundController(GameObject gameBoard, string gameModeString, string[] enabledSteeringModes, Action<IEnumerator> startMovementFunction) {
-        switch(gameModeString) { 
-            case "BalanceMode":
+    GameObject board;
+    string[] steeringModes = {"AngleRotation"}; // TODO: Get from scene change
+    SteeringMode currentSM;
+    GameMode gameMode;
+
+    // Start is called before the first frame update
+    void Start() {
+        switch(gameModeType) {
+            case GameModeEnum.BalanceMode:
                 gameMode = new BalanceMode();
                 break;
         }
-
-        steeringModes = enabledSteeringModes;
-
-        switch(steeringModes[0]) { // TODO: add randomisation
+        
+        switch(steeringModes[0]) { // TODO: add randomisation to here and update function
             case "AngleRotation":
                 currentSM = new AngleRotation();
                 break;
         }
 
         board = GameObject.Instantiate(gameMode.getBoardPrefab(), new Vector3(0, 0, 0), Quaternion.identity);
-
-        startMovement = startMovementFunction;
     }
 
     // Update is called once per frame
-    public void update()
-    {
+    public void Update() {
         
     }
 
     public void endRound() {
-        GameObject.Destroy(board);
+        Destroy(board);
     }
 
+    // ---- Event Listeners ----
+    
     /**
         Moves the board right according to current steering mode
     */
@@ -54,4 +53,12 @@ public class RoundController {
         currentSM.moveLeft(board, startMovement);
     }
 
+    // ---- Utility Functions ----
+
+    /**
+        Used by steeringmodes to run smooth movements
+    */
+    void startMovement(IEnumerator movementTracker) {
+        StartCoroutine(movementTracker);
+    }
 }
