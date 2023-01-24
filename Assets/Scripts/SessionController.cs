@@ -18,6 +18,20 @@ public class SessionController : MonoBehaviour {
     public int volume = 100;
     public bool invert = false;
 
+    public static SessionController sessionCtrl; // Needed for persistance, can be accessed for settings etc.
+
+	void Awake () {
+		//Makes sure the data is persistent between scenes
+		if (sessionCtrl == null) {
+			DontDestroyOnLoad (gameObject);
+			sessionCtrl = this;
+		} 
+
+		else if (sessionCtrl != this) {
+			Destroy (gameObject);
+		}
+	}
+
     // Start is called before the first frame update
     void Start() {
 
