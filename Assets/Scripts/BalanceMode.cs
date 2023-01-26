@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class BalanceMode : GameMode {
     const string NAME = "Balance Mode";
+    const string DESC = "Try to keep the board steady for as long as possible.";
     GameObject boardPrefab = (GameObject) Resources.Load("BalanceBoard", typeof(GameObject)); 
 
     /**
@@ -18,5 +19,12 @@ public class BalanceMode : GameMode {
     */
     public override string getName() {
         return NAME;
+    }
+
+    /**
+        Get description of game mode
+    */
+    public override string getDescription() {
+        return DESC;
     }
 }

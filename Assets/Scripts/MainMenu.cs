@@ -12,11 +12,8 @@ public class MainMenu : MonoBehaviour
     private GameModeEnum chosenGameMode;
 
     public void balanceModeButtonPressed(){
-        mainMenuButtons.SetActive(false);
-        gameModeDetails.SetActive(true);
         chosenGameMode = GameModeEnum.BalanceMode;
-        title.text = "Balance Mode";
-        description.text = "Try to keep the board steady for as long as possible.";
+        openGameDetails(new BalanceMode());
     }
 
     public void backButtonPressed() {
@@ -35,5 +32,13 @@ public class MainMenu : MonoBehaviour
                 SceneManager.LoadScene (sceneName:"BalanceScene");
                 break;
         }
+    }
+
+    // ---- Utility functions ----
+    void openGameDetails(GameMode gameMode) {
+        mainMenuButtons.SetActive(false);
+        gameModeDetails.SetActive(true);
+        title.text = gameMode.getName();
+        description.text = gameMode.getDescription();
     }
 }
