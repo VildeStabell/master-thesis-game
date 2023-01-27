@@ -2,8 +2,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
 
-public class MainMenu : MonoBehaviour
-{
+public class MainMenu : MonoBehaviour {
     public TMP_Text title;
     public TMP_Text description;
     public GameObject mainMenuButtons;
@@ -11,7 +10,7 @@ public class MainMenu : MonoBehaviour
 
     private GameModeEnum chosenGameMode;
 
-    public void balanceModeButtonPressed(){
+    public void balanceModeButtonPressed() {
         chosenGameMode = GameModeEnum.BalanceMode;
         openGameDetails(new BalanceMode());
     }
@@ -35,6 +34,7 @@ public class MainMenu : MonoBehaviour
     }
 
     // ---- Utility functions ----
+    
     void openGameDetails(GameMode gameMode) {
         mainMenuButtons.SetActive(false);
         gameModeDetails.SetActive(true);
