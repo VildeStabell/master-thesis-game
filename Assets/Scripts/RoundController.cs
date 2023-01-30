@@ -37,6 +37,10 @@ public class RoundController : MonoBehaviour {
         Destroy(board);
     }
 
+    public Transform getBoardTransform() {
+        return board.transform;
+    }
+
     // ---- Event Listeners ----
     
     /**
