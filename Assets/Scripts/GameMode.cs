@@ -13,4 +13,9 @@ public abstract class GameMode {
         Get name of game mode
     */
     public abstract string getName();
+
+    /**
+        Get description of game mode
+    */
+    public abstract string getDescription();
 }
