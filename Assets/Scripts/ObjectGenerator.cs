@@ -6,22 +6,22 @@ public class ObjectGenerator : MonoBehaviour {
     public GameObject[] objectPrefabs;
 
     private RoundController roundCtrl;
-    
+
     // Spawnable area coordinates
     private float spawnMin;
     private float spawnMax;
 
+    // Tweakable from inspector
     private float spawnHeight = 5;
-    private bool coordinatesSet = false;
-
+    private float startTime = 2.0f;
+    private float startFrequency = 20.0f;
+    private float frequencyIncrease = 0.99f;
 
     // Start is called before the first frame update
     void Start() {
         roundCtrl = gameObject.GetComponent<RoundController>();
 
-        // ---- Temp code ----
-        StartCoroutine( SpawnAfterSeconds(3.0f) );
-        // -------------------
+        StartCoroutine(SpawnAfterSeconds());
     }
 
     // Update is called once per frame
@@ -38,23 +38,30 @@ public class ObjectGenerator : MonoBehaviour {
     }
 
     /**
+        Starts the recursive spawning of objects
+    */
+    IEnumerator SpawnAfterSeconds() {
+       yield return new WaitForSeconds (startTime);
+
+       // Calculates the spawnable area
+       Vector3 boxColliderSize = roundCtrl.getBoard().GetComponent<BoxCollider>().size;
+       float sideLength = Mathf.Sqrt(Mathf.Pow(boxColliderSize.x, 2) + Mathf.Pow(boxColliderSize.z, 2))/2;
+       spawnMin = -sideLength/2;
+       spawnMax = sideLength/2;
+
+       SpawnNewObject();
+
+       StartCoroutine(SpawnAfterSeconds(startFrequency));
+    }
+    
+    /**
         Spawns an object after waiting for the specified amount of seconds
     */
     IEnumerator SpawnAfterSeconds(float seconds) {
        yield return new WaitForSeconds (seconds);
 
-       // Calculates the spawnable area
-       if (!coordinatesSet) {
-           Vector3 boxColliderSize = roundCtrl.getBoard().GetComponent<BoxCollider>().size;
-           float sideLength = Mathf.Sqrt(Mathf.Pow(boxColliderSize.x, 2) + Mathf.Pow(boxColliderSize.z, 2))/2;
-
-           spawnMin = -sideLength/2;
-           spawnMax = sideLength/2;
-
-           coordinatesSet = true;  
-       }
-
        SpawnNewObject();
-    }
 
+       StartCoroutine(SpawnAfterSeconds(seconds*frequencyIncrease));
+    }
 }
