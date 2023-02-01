@@ -375,6 +375,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameModeType: 0
+  lives: 5
 --- !u!114 &502869820
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -391,7 +392,10 @@ MonoBehaviour:
   - {fileID: 5298950646779119033, guid: 5b6ff52932fb96546affd8fa0406432b, type: 3}
   - {fileID: 38541866411476922, guid: d4853e0a544aad54e980731818aa015e, type: 3}
   - {fileID: 2406454458558006003, guid: 2556cf97ec91c1d4e84be55b6e117d71, type: 3}
-  lives: 5
+  spawnHeight: 5
+  startTime: 2
+  startFrequency: 20
+  frequencyIncrease: 0.99
 --- !u!1 &602597585
 GameObject:
   m_ObjectHideFlags: 0
