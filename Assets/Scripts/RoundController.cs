@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class RoundController : MonoBehaviour {
     public GameModeEnum gameModeType;
+    public int lives = 5;
 
     GameObject board;
     string[] steeringModes = {"AngleRotation"}; // TODO: Get from scene change
@@ -34,11 +35,20 @@ public class RoundController : MonoBehaviour {
     }
 
     public void endRound() {
+        Debug.Log("Ending round"); // TODO: transfer scores etc.
         Destroy(board);
     }
 
     public GameObject getBoard() {
         return board;
+    }
+
+    public void loseLife() {
+        lives--;
+
+        if (lives <= 0) {
+            endRound();
+        }
     }
 
     // ---- Event Listeners ----
