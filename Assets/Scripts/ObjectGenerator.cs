@@ -12,10 +12,10 @@ public class ObjectGenerator : MonoBehaviour {
     private float spawnMax;
 
     // Tweakable from inspector
-    private float spawnHeight = 5;
-    private float startTime = 2.0f;
-    private float startFrequency = 20.0f;
-    private float frequencyIncrease = 0.99f;
+    public float spawnHeight = 5;
+    public float startTime = 2.0f;
+    public float startFrequency = 20.0f;
+    public float frequencyIncrease = 0.99f;
 
     // Start is called before the first frame update
     void Start() {
