@@ -37,6 +37,10 @@ public class RoundController : MonoBehaviour {
         Destroy(board);
     }
 
+    public GameObject getBoard() {
+        return board;
+    }
+
     // ---- Event Listeners ----
     
     /**
