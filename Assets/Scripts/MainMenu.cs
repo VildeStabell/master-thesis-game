@@ -2,13 +2,15 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour {
     public TMP_Text title;
     public TMP_Text description;
     public GameObject mainMenuButtons;
     public GameObject gameModeDetails;
-    public GameObject startButton;
+    public Button primaryButton;
+    public Button playButton;
 
     private GameModeEnum chosenGameMode;
 
@@ -20,13 +22,12 @@ public class MainMenu : MonoBehaviour {
     public void backButtonPressed() {
         gameModeDetails.SetActive(false);
         mainMenuButtons.SetActive(true);
-        EventSystem.current.SetSelectedGameObject(startButton);
+        primaryButton.Select();
     }
 
     public void Start() {
         gameModeDetails.SetActive(false);
         mainMenuButtons.SetActive(true);
-        EventSystem.current.SetSelectedGameObject(startButton);
     }
 
     public void PlayButtonPressed() {
@@ -44,5 +45,6 @@ public class MainMenu : MonoBehaviour {
         gameModeDetails.SetActive(true);
         title.text = gameMode.getName();
         description.text = gameMode.getDescription();
+        playButton.Select();
     }
 }
