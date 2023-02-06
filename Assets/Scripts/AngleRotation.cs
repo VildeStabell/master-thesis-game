@@ -19,7 +19,7 @@ public class AngleRotation : SteeringMode {
     */
     public override void moveRight(GameObject board, Action<IEnumerator> startMovement) {
         if(!rotating) {
-            startMovement(Rotate(new Vector3(0, chosenAngle, 0), board));
+            startMovement(RotateY(chosenAngle, board));
         }
     }
 
@@ -28,7 +28,7 @@ public class AngleRotation : SteeringMode {
     */
     public override void moveLeft(GameObject board, Action<IEnumerator> startMovement){
         if(!rotating) {
-            startMovement(Rotate(new Vector3(0, -chosenAngle, 0), board));
+            startMovement(RotateY(-chosenAngle, board));
         }
     }
 
@@ -42,12 +42,12 @@ public class AngleRotation : SteeringMode {
     /**
         Rotate a set amount of degrees over time
     */
-    private IEnumerator Rotate(Vector3 angles, GameObject board) {
-        float duration = (Math.Abs(angles.y)/90)*1.0f;
+    private IEnumerator RotateY(float angle, GameObject board) {
         rotating = true;
+        float duration = (Math.Abs(angle)/90)*1.0f;
 
         Quaternion startRotation = board.transform.rotation;
-        Quaternion endRotation = Quaternion.Euler(angles) * startRotation;
+        Quaternion endRotation = startRotation * Quaternion.AngleAxis(angle, Vector3.up);
 
         for(float t = 0 ; t < duration ; t+= Time.deltaTime) {
             board.transform.rotation = Quaternion.Lerp(startRotation, endRotation, t / duration);

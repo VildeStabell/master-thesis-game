@@ -18,7 +18,15 @@ public class BoardFlipper : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
-        float angle = (inputValue/maxInput)*maxAngle;
-        board.transform.rotation = Quaternion.Euler(angle, 0.0f, 0.0f);
+        if (board != null) {
+            float angle = (inputValue/maxInput)*maxAngle;
+
+            Quaternion newRotation = board.transform.rotation;
+            newRotation.x = 0;
+            newRotation.z = 0;
+            newRotation = Quaternion.AngleAxis(angle, Vector3.right) * newRotation;
+
+            board.transform.rotation = newRotation;
+        }
     }
 }
