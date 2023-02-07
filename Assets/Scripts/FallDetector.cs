@@ -7,7 +7,7 @@ public class FallDetector : MonoBehaviour {
 
     // Start is called before the first frame update
     void Start() {
-        roundCtrl = SessionController.sessionCtrl.gameObject.GetComponent<RoundController>();
+        roundCtrl = GameObject.Find("RoundController").GetComponent<RoundController>();
     }
     
     /** 
