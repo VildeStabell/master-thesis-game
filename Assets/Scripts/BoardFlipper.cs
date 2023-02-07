@@ -18,6 +18,10 @@ public class BoardFlipper : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
+        flipBoard();
+    }
+
+    public void flipBoard() {
         if (board != null) {
             float angle = (inputValue/maxInput)*maxAngle;
 

@@ -10,6 +10,7 @@ public class ObjectGenerator : MonoBehaviour {
     // Spawnable area coordinates
     private float spawnMin;
     private float spawnMax;
+    private bool spawnCalculated = false;
 
     // Tweakable from inspector
     public float spawnHeight = 5;
@@ -41,27 +42,30 @@ public class ObjectGenerator : MonoBehaviour {
         Starts the recursive spawning of objects
     */
     IEnumerator SpawnAfterSeconds() {
-       yield return new WaitForSeconds (startTime);
+        yield return new WaitForSeconds (startTime);
 
-       // Calculates the spawnable area
-       Vector3 boxColliderSize = roundCtrl.getBoard().GetComponent<BoxCollider>().size;
-       float sideLength = Mathf.Sqrt(Mathf.Pow(boxColliderSize.x, 2) + Mathf.Pow(boxColliderSize.z, 2))/2;
-       spawnMin = -sideLength/2;
-       spawnMax = sideLength/2;
+        if (!spawnCalculated) {
+           // Calculates the spawnable area
+           Vector3 boxColliderSize = roundCtrl.getBoard().GetComponent<BoxCollider>().size;
+           float sideLength = Mathf.Sqrt(Mathf.Pow(boxColliderSize.x, 2) + Mathf.Pow(boxColliderSize.z, 2))/2;
+           spawnMin = -sideLength/2;
+           spawnMax = sideLength/2;
+        }
 
-       SpawnNewObject();
+        SpawnNewObject();
 
-       StartCoroutine(SpawnAfterSeconds(startFrequency));
+        StartCoroutine(SpawnAfterSeconds(startFrequency));
     }
     
     /**
         Spawns an object after waiting for the specified amount of seconds
     */
     IEnumerator SpawnAfterSeconds(float seconds) {
-       yield return new WaitForSeconds (seconds);
+        yield return new WaitForSeconds (seconds);
 
-       SpawnNewObject();
-
-       StartCoroutine(SpawnAfterSeconds(seconds*frequencyIncrease));
+        if (roundCtrl.getBoard()) { 
+            SpawnNewObject();
+            StartCoroutine(SpawnAfterSeconds(seconds*frequencyIncrease));
+        }
     }
 }
