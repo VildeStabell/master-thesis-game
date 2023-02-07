@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class FallDetector : MonoBehaviour {
-    RoundController roundCtrl;
+    public RoundController roundCtrl;
 
     // Start is called before the first frame update
     void Start() {
-        roundCtrl = GameObject.Find("RoundController").GetComponent<RoundController>();
+        
     }
     
     /** 
