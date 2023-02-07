@@ -6,11 +6,11 @@ public class ObjectGenerator : MonoBehaviour {
     public GameObject[] objectPrefabs;
 
     private RoundController roundCtrl;
+    private GameObject board;
 
     // Spawnable area coordinates
     private float spawnMin;
     private float spawnMax;
-    private bool spawnCalculated = false;
 
     // Tweakable from inspector
     public float spawnHeight = 5;
@@ -35,7 +35,9 @@ public class ObjectGenerator : MonoBehaviour {
         float xCoord = Random.Range(spawnMin, spawnMax);
         float zCoord = Random.Range(spawnMin, spawnMax);
         
-        Instantiate(prefab, new Vector3(xCoord, spawnHeight, zCoord), Quaternion.identity, roundCtrl.getBoard().transform);
+        if (board) { 
+            Instantiate(prefab, new Vector3(xCoord, spawnHeight, zCoord), Quaternion.identity, board.transform);
+        }
     }
 
     /**
@@ -44,13 +46,13 @@ public class ObjectGenerator : MonoBehaviour {
     IEnumerator SpawnAfterSeconds() {
         yield return new WaitForSeconds (startTime);
 
-        if (!spawnCalculated) {
-           // Calculates the spawnable area
-           Vector3 boxColliderSize = roundCtrl.getBoard().GetComponent<BoxCollider>().size;
-           float sideLength = Mathf.Sqrt(Mathf.Pow(boxColliderSize.x, 2) + Mathf.Pow(boxColliderSize.z, 2))/2;
-           spawnMin = -sideLength/2;
-           spawnMax = sideLength/2;
-        }
+        board = roundCtrl.getBoard();
+
+        // Calculates the spawnable area
+        Vector3 boxColliderSize = board.GetComponent<BoxCollider>().size;
+        float sideLength = Mathf.Sqrt(Mathf.Pow(boxColliderSize.x, 2) + Mathf.Pow(boxColliderSize.z, 2))/2;
+        spawnMin = -sideLength/2;
+        spawnMax = sideLength/2;
 
         SpawnNewObject();
 
@@ -63,7 +65,7 @@ public class ObjectGenerator : MonoBehaviour {
     IEnumerator SpawnAfterSeconds(float seconds) {
         yield return new WaitForSeconds (seconds);
 
-        if (roundCtrl.getBoard()) { 
+        if (board) { 
             SpawnNewObject();
             StartCoroutine(SpawnAfterSeconds(seconds*frequencyIncrease));
         }
