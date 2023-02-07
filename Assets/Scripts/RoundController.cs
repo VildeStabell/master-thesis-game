@@ -2,9 +2,12 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class RoundController : MonoBehaviour {
     public GameModeEnum gameModeType;
+    public int lives = 5;
+    public GameObject endRoundButtons;
 
     GameObject board;
     string[] steeringModes = {"AngleRotation"}; // TODO: Get from scene change
@@ -13,6 +16,7 @@ public class RoundController : MonoBehaviour {
 
     // Start is called before the first frame update
     void Start() {
+        endRoundButtons.SetActive(false);
         switch(gameModeType) {
             case GameModeEnum.BalanceMode:
                 gameMode = new BalanceMode();
@@ -34,7 +38,22 @@ public class RoundController : MonoBehaviour {
     }
 
     public void endRound() {
+        Debug.Log("Ending round"); // TODO: transfer scores etc.
         Destroy(board);
+        endRoundButtons.SetActive(true);
+
+    }
+
+    public GameObject getBoard() {
+        return board;
+    }
+
+    public void loseLife() {
+        lives--;
+
+        if (lives <= 0) {
+            endRound();
+        }
     }
 
     // ---- Event Listeners ----
@@ -52,6 +71,20 @@ public class RoundController : MonoBehaviour {
     public void moveLeft() {
         currentSM.moveLeft(board, startMovement);
     }
+    
+    /**
+        Reloads the current scene
+    */
+    public void restart() {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    /**
+        Reloads to the main menu
+    */
+    public void returnToMenu() { 
+        SceneManager.LoadScene(sceneName:"MainMenuScene");
+    }
 
     // ---- Utility Functions ----
 
@@ -61,4 +94,5 @@ public class RoundController : MonoBehaviour {
     void startMovement(IEnumerator movementTracker) {
         StartCoroutine(movementTracker);
     }
+
 }
