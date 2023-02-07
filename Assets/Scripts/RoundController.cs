@@ -40,6 +40,7 @@ public class RoundController : MonoBehaviour {
     public void endRound() {
         Debug.Log("Ending round"); // TODO: transfer scores etc.
         Destroy(board);
+        gameObject.GetComponent<ObjectGenerator>().enabled = false;
         endRoundButtons.SetActive(true);
 
     }
