@@ -6,6 +6,7 @@ public class ObjectGenerator : MonoBehaviour {
     public GameObject[] objectPrefabs;
 
     private RoundController roundCtrl;
+    private GameObject board;
 
     // Spawnable area coordinates
     private float spawnMin;
@@ -34,34 +35,39 @@ public class ObjectGenerator : MonoBehaviour {
         float xCoord = Random.Range(spawnMin, spawnMax);
         float zCoord = Random.Range(spawnMin, spawnMax);
         
-        Instantiate(prefab, new Vector3(xCoord, spawnHeight, zCoord), Quaternion.identity, roundCtrl.getBoard().transform);
+        if (board) { 
+            Instantiate(prefab, new Vector3(xCoord, spawnHeight, zCoord), Quaternion.identity, board.transform);
+        }
     }
 
     /**
         Starts the recursive spawning of objects
     */
     IEnumerator SpawnAfterSeconds() {
-       yield return new WaitForSeconds (startTime);
+        yield return new WaitForSeconds (startTime);
 
-       // Calculates the spawnable area
-       Vector3 boxColliderSize = roundCtrl.getBoard().GetComponent<BoxCollider>().size;
-       float sideLength = Mathf.Sqrt(Mathf.Pow(boxColliderSize.x, 2) + Mathf.Pow(boxColliderSize.z, 2))/2;
-       spawnMin = -sideLength/2;
-       spawnMax = sideLength/2;
+        board = roundCtrl.getBoard();
 
-       SpawnNewObject();
+        // Calculates the spawnable area
+        Vector3 boxColliderSize = board.GetComponent<BoxCollider>().size;
+        float sideLength = Mathf.Sqrt(Mathf.Pow(boxColliderSize.x, 2) + Mathf.Pow(boxColliderSize.z, 2))/2;
+        spawnMin = -sideLength/2;
+        spawnMax = sideLength/2;
 
-       StartCoroutine(SpawnAfterSeconds(startFrequency));
+        SpawnNewObject();
+
+        StartCoroutine(SpawnAfterSeconds(startFrequency));
     }
     
     /**
         Spawns an object after waiting for the specified amount of seconds
     */
     IEnumerator SpawnAfterSeconds(float seconds) {
-       yield return new WaitForSeconds (seconds);
+        yield return new WaitForSeconds (seconds);
 
-       SpawnNewObject();
-
-       StartCoroutine(SpawnAfterSeconds(seconds*frequencyIncrease));
+        if (board) { 
+            SpawnNewObject();
+            StartCoroutine(SpawnAfterSeconds(seconds*frequencyIncrease));
+        }
     }
 }
