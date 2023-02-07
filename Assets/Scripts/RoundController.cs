@@ -72,6 +72,20 @@ public class RoundController : MonoBehaviour {
     public void moveLeft() {
         currentSM.moveLeft(board, startMovement);
     }
+    
+    /**
+        Reloads the current scene
+    */
+    public void restart(){
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    /**
+        Reloads to the main menu
+    */
+    public void returnToMenu(){ 
+        SceneManager.LoadScene(sceneName:"MainMenuScene");
+    }
 
     // ---- Utility Functions ----
 
@@ -82,11 +96,5 @@ public class RoundController : MonoBehaviour {
         StartCoroutine(movementTracker);
     }
 
-    public void restart(){
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-    }
-
-    public void returnToMenu(){ 
-        SceneManager.LoadScene(sceneName:"MainMenuScene");
-    }
+    
 }
