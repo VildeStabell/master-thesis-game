@@ -76,14 +76,14 @@ public class RoundController : MonoBehaviour {
     /**
         Reloads the current scene
     */
-    public void restart(){
+    public void restart() {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     /**
         Reloads to the main menu
     */
-    public void returnToMenu(){ 
+    public void returnToMenu() { 
         SceneManager.LoadScene(sceneName:"MainMenuScene");
     }
 
@@ -96,5 +96,4 @@ public class RoundController : MonoBehaviour {
         StartCoroutine(movementTracker);
     }
 
-    
 }
