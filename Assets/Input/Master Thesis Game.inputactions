@@ -488,6 +488,17 @@
                 },
                 {
                     "name": "",
+                    "id": "99bce91b-f1c7-4a41-ade3-d80b7a9f8bec",
+                    "path": "<HID::Arduino LLC Arduino Micro>/button8",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Submit",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "82627dcc-3b13-4ba9-841d-e4b746d6553e",
                     "path": "*/{Cancel}",
                     "interactions": "",
@@ -559,17 +570,6 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Touch",
-                    "action": "Click",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "523e9a81-918a-4cb1-8efa-b5d2243c07ab",
-                    "path": "<HID::Arduino LLC Arduino Micro>/button8",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
                     "action": "Click",
                     "isComposite": false,
                     "isPartOfComposite": false

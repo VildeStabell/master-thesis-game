@@ -3,11 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class RoundController : MonoBehaviour {
     public GameModeEnum gameModeType;
     public int lives = 5;
     public GameObject endRoundButtons;
+    public Button replayButton;
 
     GameObject board;
     string[] steeringModes = {"AngleRotation"}; // TODO: Get from scene change
@@ -41,6 +43,7 @@ public class RoundController : MonoBehaviour {
         Debug.Log("Ending round"); // TODO: transfer scores etc.
         Destroy(board);
         endRoundButtons.SetActive(true);
+        replayButton.Select();
 
     }
 
@@ -62,14 +65,18 @@ public class RoundController : MonoBehaviour {
         Moves the board right according to current steering mode
     */
     public void moveRight() {
-        currentSM.moveRight(board, startMovement);
+        if (board) {
+            currentSM.moveRight(board, startMovement);
+        }
     }
 
     /**
         Moves the board left according to current steering mode
     */
     public void moveLeft() {
-        currentSM.moveLeft(board, startMovement);
+        if (board) {
+            currentSM.moveLeft(board, startMovement);
+        }
     }
     
     /**
@@ -92,7 +99,7 @@ public class RoundController : MonoBehaviour {
         Used by steeringmodes to run smooth movements
     */
     void startMovement(IEnumerator movementTracker) {
-        StartCoroutine(movementTracker);
+            StartCoroutine(movementTracker);
     }
 
 }
