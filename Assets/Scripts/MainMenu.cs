@@ -12,6 +12,7 @@ public class MainMenu : MonoBehaviour {
     public Button primaryButton;
     public Button playButton;
 
+
     private GameModeEnum chosenGameMode;
 
     public void balanceModeButtonPressed() {
@@ -37,6 +38,7 @@ public class MainMenu : MonoBehaviour {
                 break;
         }
     }
+
 
     // ---- Utility functions ----
     
