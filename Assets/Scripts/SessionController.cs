@@ -14,7 +14,7 @@ public class SessionController : MonoBehaviour {
     public string[] steeringModes = {"AngleRotation"};
 
     //These vars are public to be able to quickly change in inspector
-    public int eqCad = 10; //TODO: temp num
+    public float eqCad = 0.5f; //TODO: temp num
     public int volume = 100;
     public bool invert = false;
 
@@ -68,5 +68,13 @@ public class SessionController : MonoBehaviour {
     */
     public void setInvert(bool newInvert) {
         invert = newInvert;
+    }
+
+    public void setEqCadence(float newEqCad) {
+        eqCad = newEqCad;
+    }
+
+    public float getEqCadence(){
+        return eqCad;
     }
 }
