@@ -4,24 +4,28 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using TMPro;
 
 public class RoundController : MonoBehaviour {
     public GameModeEnum gameModeType;
     public int lives = 5;
     public GameObject endRoundButtons;
     public Button replayButton;
+    public string scoreText = "Score: ";
+    public TMP_Text scoreObject;
 
     GameObject board;
     string[] steeringModes = {"AngleRotation"}; // TODO: Get from scene change
     SteeringMode currentSM;
     GameMode gameMode;
+    bool roundOver = false;
 
     // Start is called before the first frame update
     void Start() {
         endRoundButtons.SetActive(false);
         switch(gameModeType) {
             case GameModeEnum.BalanceMode:
-                gameMode = new BalanceMode();
+                gameMode = new BalanceMode(this);
                 break;
         }
         
@@ -36,7 +40,7 @@ public class RoundController : MonoBehaviour {
 
     // Update is called once per frame
     public void Update() {
-        
+        scoreObject.text = scoreText + gameMode.getScore(roundOver);
     }
 
     public void endRound() {
@@ -44,7 +48,7 @@ public class RoundController : MonoBehaviour {
         Destroy(board);
         endRoundButtons.SetActive(true);
         replayButton.Select();
-
+        roundOver = true;
     }
 
     public GameObject getBoard() {
