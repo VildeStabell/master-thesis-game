@@ -10,9 +10,9 @@ public class BoardFlipper : MonoBehaviour {
     const float rotationSpeed = 0.1f;
     const float eqBalance = 0.5f; // TODO: TEMPORARY
 
-    public MasterThesisGameInput input;
     [Range(0, maxInput)]
     public float cadence;
+    public MasterThesisGameInput input;
 
     private GameObject board;
     private InputAction cadenceInput;
@@ -41,8 +41,6 @@ public class BoardFlipper : MonoBehaviour {
     private void OnDisable() {
         cadenceInput = input.Player.Cadence; 
     }
-
-
 
     private IEnumerator readCadence(float seconds) {
         yield return new WaitForSeconds (seconds);
