@@ -43,6 +43,7 @@ public class CalibrationController : MonoBehaviour
         {
             usedTime = Time.time - startTime;
             float eqCad = sumCadence / usedTime;
+            SessionController.sessionCtrl.setEqCadence(eqCad);
         }
 
     }
