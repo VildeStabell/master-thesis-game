@@ -10,11 +10,15 @@ public class RoundController : MonoBehaviour {
     public int lives = 5;
     public GameObject endRoundButtons;
     public Button replayButton;
+    public GameObject lifeContainer;
+    public GameObject lifeIndicator;
+    public float lifeSpacing = -12.0f;
 
     GameObject board;
     string[] steeringModes = {"AngleRotation"}; // TODO: Get from scene change
     SteeringMode currentSM;
     GameMode gameMode;
+    Stack<GameObject> lifeIndicators = new Stack<GameObject>();
 
     // Start is called before the first frame update
     void Start() {
@@ -32,6 +36,14 @@ public class RoundController : MonoBehaviour {
         }
 
         board = GameObject.Instantiate(gameMode.getBoardPrefab(), new Vector3(0, 0, 0), Quaternion.identity);
+
+        // Spawn life indicators
+        for(int i = 0; i < lives; i++) {
+            GameObject life = Instantiate(lifeIndicator, lifeContainer.transform);
+            life.transform.position = lifeContainer.transform.position + new Vector3(i * lifeSpacing, 0, 0);
+            life.transform.rotation = new Quaternion(0, 0, 0, 0);
+            lifeIndicators.Push(life);
+        }
     }
 
     // Update is called once per frame
@@ -53,6 +65,7 @@ public class RoundController : MonoBehaviour {
 
     public void loseLife() {
         lives--;
+        Destroy(lifeIndicators.Pop());
 
         if (lives <= 0) {
             endRound();
