@@ -12,10 +12,11 @@ public class BoardFlipper : MonoBehaviour {
 
     [Range(0, maxInput)]
     public float cadence;
-    public MasterThesisGameInput input;
+    public MasterThesisGameInput inputActions;
 
     private GameObject board;
     private InputAction cadenceInput;
+    private PlayerInput playerInput; // Needed to check control scheme
 
     // Start is called before the first frame update
     void Start() {
@@ -30,26 +31,29 @@ public class BoardFlipper : MonoBehaviour {
     }
 
     private void Awake() {
-        input = new MasterThesisGameInput();
+        inputActions = new MasterThesisGameInput();
+        playerInput = GameObject.Find("RoundController").GetComponent<PlayerInput>();
     }
 
     private void OnEnable(){
-        cadenceInput = input.Player.Cadence; 
+        cadenceInput = inputActions.Player.Cadence; 
         cadenceInput.Enable();
     }
 
     private void OnDisable() {
-        cadenceInput = input.Player.Cadence; 
+        cadenceInput = inputActions.Player.Cadence; 
     }
 
     private IEnumerator readCadence(float seconds) {
         yield return new WaitForSeconds (seconds);
 
         if (board != null) {
-            Vector2 cadenceVector = cadenceInput.ReadValue<Vector2>();
-            float absX = Mathf.Abs(cadenceVector.x);
-            float absY = Mathf.Abs(cadenceVector.y);
-            cadence = Mathf.Max(absX, absY) - Mathf.Min(absY, absX);
+            if (playerInput.currentControlScheme == "Bike") {
+                Vector2 cadenceVector = cadenceInput.ReadValue<Vector2>();
+                float absX = Mathf.Abs(cadenceVector.x);
+                float absY = Mathf.Abs(cadenceVector.y);
+                cadence = Mathf.Max(absX, absY) - Mathf.Min(absY, absX);
+            }
 
             StartCoroutine(readCadence(seconds));
         }

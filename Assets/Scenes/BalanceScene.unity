@@ -408,7 +408,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1112588425}
-  m_RootOrder: 0
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
@@ -867,7 +867,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Actions: {fileID: -944628639613478452, guid: 7f689a492a07448438061cdef6d72342, type: 3}
   m_NotificationBehavior: 2
-  m_UIInputModule: {fileID: 0}
+  m_UIInputModule: {fileID: 1256893202}
   m_DeviceLostEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -958,7 +958,7 @@ MonoBehaviour:
   m_DefaultControlScheme: Keyboard&Mouse
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
-  m_Camera: {fileID: 0}
+  m_Camera: {fileID: 13557452}
 --- !u!1 &1112588421
 GameObject:
   m_ObjectHideFlags: 0
@@ -1054,8 +1054,6 @@ RectTransform:
   - {fileID: 136854453}
   - {fileID: 621228636}
   - {fileID: 374992876}
-  - {fileID: 200872635}
-  - {fileID: 2076409894}
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

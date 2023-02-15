@@ -73,7 +73,7 @@
                     "path": "<HID::Arduino LLC Arduino Micro>/button6",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "Bike",
                     "action": "MoveRight",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -117,7 +117,7 @@
                     "path": "<HID::Arduino LLC Arduino Micro>/trigger",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "Bike",
                     "action": "MoveLeft",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -139,7 +139,7 @@
                     "path": "<Joystick>/stick/up",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "Bike",
                     "action": "Cadence",
                     "isComposite": false,
                     "isPartOfComposite": true
@@ -150,7 +150,7 @@
                     "path": "<Joystick>/stick/y",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "Bike",
                     "action": "Cadence",
                     "isComposite": false,
                     "isPartOfComposite": true
@@ -172,7 +172,7 @@
                     "path": "<HID::Arduino LLC Arduino Micro>/stick/up",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "Bike",
                     "action": "Cadence",
                     "isComposite": false,
                     "isPartOfComposite": true
@@ -183,7 +183,7 @@
                     "path": "<HID::Arduino LLC Arduino Micro>/stick/y",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "Bike",
                     "action": "Cadence",
                     "isComposite": false,
                     "isPartOfComposite": true
@@ -194,7 +194,7 @@
                     "path": "<Joystick>/stick",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "Bike",
                     "action": "Cadence",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -730,7 +730,7 @@
                 },
                 {
                     "devicePath": "<Mouse>",
-                    "isOptional": false,
+                    "isOptional": true,
                     "isOR": false
                 }
             ]
@@ -775,6 +775,17 @@
                 {
                     "devicePath": "<XRController>",
                     "isOptional": false,
+                    "isOR": false
+                }
+            ]
+        },
+        {
+            "name": "Bike",
+            "bindingGroup": "Bike",
+            "devices": [
+                {
+                    "devicePath": "<HID>",
+                    "isOptional": true,
                     "isOR": false
                 }
             ]

@@ -95,7 +95,7 @@ public partial class @MasterThesisGameInput : IInputActionCollection2, IDisposab
                     ""path"": ""<HID::Arduino LLC Arduino Micro>/button6"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""Bike"",
                     ""action"": ""MoveRight"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -139,7 +139,7 @@ public partial class @MasterThesisGameInput : IInputActionCollection2, IDisposab
                     ""path"": ""<HID::Arduino LLC Arduino Micro>/trigger"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""Bike"",
                     ""action"": ""MoveLeft"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -161,7 +161,7 @@ public partial class @MasterThesisGameInput : IInputActionCollection2, IDisposab
                     ""path"": ""<Joystick>/stick/up"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""Bike"",
                     ""action"": ""Cadence"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
@@ -172,7 +172,7 @@ public partial class @MasterThesisGameInput : IInputActionCollection2, IDisposab
                     ""path"": ""<Joystick>/stick/y"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""Bike"",
                     ""action"": ""Cadence"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
@@ -194,7 +194,7 @@ public partial class @MasterThesisGameInput : IInputActionCollection2, IDisposab
                     ""path"": ""<HID::Arduino LLC Arduino Micro>/stick/up"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""Bike"",
                     ""action"": ""Cadence"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
@@ -205,7 +205,7 @@ public partial class @MasterThesisGameInput : IInputActionCollection2, IDisposab
                     ""path"": ""<HID::Arduino LLC Arduino Micro>/stick/y"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""Bike"",
                     ""action"": ""Cadence"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
@@ -216,7 +216,7 @@ public partial class @MasterThesisGameInput : IInputActionCollection2, IDisposab
                     ""path"": ""<Joystick>/stick"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""Bike"",
                     ""action"": ""Cadence"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -752,7 +752,7 @@ public partial class @MasterThesisGameInput : IInputActionCollection2, IDisposab
                 },
                 {
                     ""devicePath"": ""<Mouse>"",
-                    ""isOptional"": false,
+                    ""isOptional"": true,
                     ""isOR"": false
                 }
             ]
@@ -797,6 +797,17 @@ public partial class @MasterThesisGameInput : IInputActionCollection2, IDisposab
                 {
                     ""devicePath"": ""<XRController>"",
                     ""isOptional"": false,
+                    ""isOR"": false
+                }
+            ]
+        },
+        {
+            ""name"": ""Bike"",
+            ""bindingGroup"": ""Bike"",
+            ""devices"": [
+                {
+                    ""devicePath"": ""<HID>"",
+                    ""isOptional"": true,
                     ""isOR"": false
                 }
             ]
@@ -1072,6 +1083,15 @@ public partial class @MasterThesisGameInput : IInputActionCollection2, IDisposab
         {
             if (m_XRSchemeIndex == -1) m_XRSchemeIndex = asset.FindControlSchemeIndex("XR");
             return asset.controlSchemes[m_XRSchemeIndex];
+        }
+    }
+    private int m_BikeSchemeIndex = -1;
+    public InputControlScheme BikeScheme
+    {
+        get
+        {
+            if (m_BikeSchemeIndex == -1) m_BikeSchemeIndex = asset.FindControlSchemeIndex("Bike");
+            return asset.controlSchemes[m_BikeSchemeIndex];
         }
     }
     public interface IPlayerActions
