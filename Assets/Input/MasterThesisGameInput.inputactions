@@ -1,5 +1,5 @@
 {
-    "name": "Master Thesis Game",
+    "name": "MasterThesisGameInput",
     "maps": [
         {
             "name": "Player",
@@ -19,6 +19,15 @@
                     "type": "Button",
                     "id": "a0aa4d3a-46a2-4749-b942-d9bd9248b6e9",
                     "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "Cadence",
+                    "type": "Value",
+                    "id": "161889a8-557b-4dbb-b984-779b603721af",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
@@ -61,7 +70,7 @@
                 {
                     "name": "",
                     "id": "e67441b4-b72a-4607-a04f-833a0ad46bb8",
-                    "path": "<HID::Arduino LLC Arduino Micro>/button5",
+                    "path": "<HID::Arduino LLC Arduino Micro>/button6",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -105,11 +114,88 @@
                 {
                     "name": "",
                     "id": "8397cf79-2dfd-4e7b-9696-4d2065f4c2ab",
-                    "path": "<HID::Arduino LLC Arduino Micro>/button2",
+                    "path": "<HID::Arduino LLC Arduino Micro>/trigger",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "MoveLeft",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "1D Axis",
+                    "id": "f3cefb78-4a93-492c-8c38-0255aab9565a",
+                    "path": "1DAxis",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Cadence",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "positive",
+                    "id": "960d99c7-27a7-4ff9-b7ab-0191a35be2ec",
+                    "path": "<Joystick>/stick/up",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Cadence",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "negative",
+                    "id": "6f237ab6-4812-4fba-b595-39f9c6a06c40",
+                    "path": "<Joystick>/stick/y",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Cadence",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "1D Axis",
+                    "id": "2dfa007c-6985-4a16-8de6-bb6e6625df53",
+                    "path": "1DAxis",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Cadence",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "positive",
+                    "id": "05668107-bebd-4f1c-b09c-90c282c95d46",
+                    "path": "<HID::Arduino LLC Arduino Micro>/stick/up",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Cadence",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "negative",
+                    "id": "d17558d6-f542-4c66-8bdc-e12021b1e9ce",
+                    "path": "<HID::Arduino LLC Arduino Micro>/stick/y",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Cadence",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "fb1c6a54-5146-413a-b2cb-45851f509910",
+                    "path": "<Joystick>/stick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Cadence",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
