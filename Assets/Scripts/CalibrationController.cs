@@ -2,15 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
+using TMPro;
 
 public class CalibrationController : MonoBehaviour
 {
 
     public const float maxCadence = 50f;
+    const float readSpeed = 0.2f;
     public MasterThesisGameInput input;
+    public TMP_Text text;
     private InputAction cadenceInput;
     private float sumCadence = 0;
-    private float startTime;
+    private float startTime = 0;
     private float usedTime;
 
 
@@ -33,7 +37,7 @@ public class CalibrationController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        startTime = Time.time;
+        StartCoroutine(readCadence(readSpeed));
     }
 
     // Update is called once per frame
@@ -44,6 +48,7 @@ public class CalibrationController : MonoBehaviour
             usedTime = Time.time - startTime;
             float eqCad = sumCadence / usedTime;
             SessionController.sessionCtrl.setEqCadence(eqCad);
+            text.text = eqCad.ToString();
         }
 
     }
@@ -59,7 +64,13 @@ public class CalibrationController : MonoBehaviour
             float absY = Mathf.Abs(cadenceVector.y);
             float cadence = Mathf.Max(absX, absY) - Mathf.Min(absY, absX);
             sumCadence += cadence;
+            if (sumCadence > 0 && startTime == 0)
+            {
+                startTime = Time.time;
+            }
             StartCoroutine(readCadence(seconds));
+
+            text.text = sumCadence.ToString() + "/" + maxCadence.ToString();
         }
     }
 }
