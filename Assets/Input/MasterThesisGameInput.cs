@@ -53,6 +53,15 @@ public partial class @MasterThesisGameInput : IInputActionCollection2, IDisposab
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Pause/Unpause"",
+                    ""type"": ""Button"",
+                    ""id"": ""80eb379d-7d1b-4960-9c32-1d9a7db4a7f0"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -218,6 +227,17 @@ public partial class @MasterThesisGameInput : IInputActionCollection2, IDisposab
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Cadence"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""4cb277bc-3b26-4210-a9ef-54f0aada9031"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""Pause/Unpause"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -808,6 +828,7 @@ public partial class @MasterThesisGameInput : IInputActionCollection2, IDisposab
         m_Player_MoveRight = m_Player.FindAction("MoveRight", throwIfNotFound: true);
         m_Player_MoveLeft = m_Player.FindAction("MoveLeft", throwIfNotFound: true);
         m_Player_Cadence = m_Player.FindAction("Cadence", throwIfNotFound: true);
+        m_Player_PauseUnpause = m_Player.FindAction("Pause/Unpause", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -882,6 +903,7 @@ public partial class @MasterThesisGameInput : IInputActionCollection2, IDisposab
     private readonly InputAction m_Player_MoveRight;
     private readonly InputAction m_Player_MoveLeft;
     private readonly InputAction m_Player_Cadence;
+    private readonly InputAction m_Player_PauseUnpause;
     public struct PlayerActions
     {
         private @MasterThesisGameInput m_Wrapper;
@@ -889,6 +911,7 @@ public partial class @MasterThesisGameInput : IInputActionCollection2, IDisposab
         public InputAction @MoveRight => m_Wrapper.m_Player_MoveRight;
         public InputAction @MoveLeft => m_Wrapper.m_Player_MoveLeft;
         public InputAction @Cadence => m_Wrapper.m_Player_Cadence;
+        public InputAction @PauseUnpause => m_Wrapper.m_Player_PauseUnpause;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -907,6 +930,9 @@ public partial class @MasterThesisGameInput : IInputActionCollection2, IDisposab
                 @Cadence.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCadence;
                 @Cadence.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCadence;
                 @Cadence.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCadence;
+                @PauseUnpause.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPauseUnpause;
+                @PauseUnpause.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPauseUnpause;
+                @PauseUnpause.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPauseUnpause;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -920,6 +946,9 @@ public partial class @MasterThesisGameInput : IInputActionCollection2, IDisposab
                 @Cadence.started += instance.OnCadence;
                 @Cadence.performed += instance.OnCadence;
                 @Cadence.canceled += instance.OnCadence;
+                @PauseUnpause.started += instance.OnPauseUnpause;
+                @PauseUnpause.performed += instance.OnPauseUnpause;
+                @PauseUnpause.canceled += instance.OnPauseUnpause;
             }
         }
     }
@@ -1079,6 +1108,7 @@ public partial class @MasterThesisGameInput : IInputActionCollection2, IDisposab
         void OnMoveRight(InputAction.CallbackContext context);
         void OnMoveLeft(InputAction.CallbackContext context);
         void OnCadence(InputAction.CallbackContext context);
+        void OnPauseUnpause(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

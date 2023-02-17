@@ -16,24 +16,28 @@ public class BoardFlipper : MonoBehaviour {
 
     private GameObject board;
     private InputAction cadenceInput;
+    private RoundController roundCtrl;
 
     // Start is called before the first frame update
     void Start() {
         board = gameObject;
+        roundCtrl = GameObject.Find("RoundController").GetComponent<RoundController>();
 
         StartCoroutine(readCadence(readSpeed));
     }
 
     // Update is called once per frame
     void Update() {
-        flipBoard();
+        if (!roundCtrl.isPaused()) {
+            flipBoard();
+        }
     }
 
     private void Awake() {
         input = new MasterThesisGameInput();
     }
 
-    private void OnEnable(){
+    private void OnEnable() {
         cadenceInput = input.Player.Cadence; 
         cadenceInput.Enable();
     }

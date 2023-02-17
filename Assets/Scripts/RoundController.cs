@@ -11,6 +11,8 @@ public class RoundController : MonoBehaviour {
     public int lives = 5;
     public GameObject endRoundButtons;
     public Button replayButton;
+    public GameObject pauseMenu;
+    public Button continueButton;
     public GameObject lifeContainer;
     public GameObject lifeIndicator;
     public float lifeSpacing = -12.0f;
@@ -23,10 +25,13 @@ public class RoundController : MonoBehaviour {
     GameMode gameMode;
     Stack<GameObject> lifeIndicators = new Stack<GameObject>();
     bool roundOver = false;
+    bool paused = false;
 
     // Start is called before the first frame update
     void Start() {
         endRoundButtons.SetActive(false);
+        pauseMenu.SetActive(false);
+
         switch(gameModeType) {
             case GameModeEnum.BalanceMode:
                 gameMode = new BalanceMode(this);
@@ -76,13 +81,17 @@ public class RoundController : MonoBehaviour {
         }
     }
 
+    public bool isPaused() {
+        return paused;
+    }
+
     // ---- Event Listeners ----
     
     /**
         Moves the board right according to current steering mode
     */
     public void moveRight() {
-        if (board) {
+        if (board && !paused) {
             currentSM.moveRight(board, startMovement);
         }
     }
@@ -91,7 +100,7 @@ public class RoundController : MonoBehaviour {
         Moves the board left according to current steering mode
     */
     public void moveLeft() {
-        if (board) {
+        if (board && !paused) {
             currentSM.moveLeft(board, startMovement);
         }
     }
@@ -108,6 +117,30 @@ public class RoundController : MonoBehaviour {
     */
     public void returnToMenu() { 
         SceneManager.LoadScene(sceneName:"MainMenuScene");
+    }
+
+    /**
+        Pauses the game and opens the pause menu
+    */
+    public void pauseGame () {
+        if(!paused) {
+            paused = true;
+            pauseMenu.SetActive(true);
+            continueButton.Select();
+            Time.timeScale = 0;
+        }
+        else {
+            resumeGame();
+        }
+    }
+
+    /**
+        Unpauses the game and hides the pause menu
+    */
+    public void resumeGame () {
+        paused = false;
+        pauseMenu.SetActive(false);
+        Time.timeScale = 1;
     }
 
     // ---- Utility Functions ----
