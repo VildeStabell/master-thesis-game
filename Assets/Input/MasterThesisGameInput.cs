@@ -154,72 +154,6 @@ public partial class @MasterThesisGameInput : IInputActionCollection2, IDisposab
                     ""isPartOfComposite"": false
                 },
                 {
-                    ""name"": ""1D Axis"",
-                    ""id"": ""f3cefb78-4a93-492c-8c38-0255aab9565a"",
-                    ""path"": ""1DAxis"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Cadence"",
-                    ""isComposite"": true,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": ""positive"",
-                    ""id"": ""960d99c7-27a7-4ff9-b7ab-0191a35be2ec"",
-                    ""path"": ""<Joystick>/stick/up"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Cadence"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""negative"",
-                    ""id"": ""6f237ab6-4812-4fba-b595-39f9c6a06c40"",
-                    ""path"": ""<Joystick>/stick/y"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Cadence"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""1D Axis"",
-                    ""id"": ""2dfa007c-6985-4a16-8de6-bb6e6625df53"",
-                    ""path"": ""1DAxis"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Cadence"",
-                    ""isComposite"": true,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": ""positive"",
-                    ""id"": ""05668107-bebd-4f1c-b09c-90c282c95d46"",
-                    ""path"": ""<HID::Arduino LLC Arduino Micro>/stick/up"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Cadence"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""negative"",
-                    ""id"": ""d17558d6-f542-4c66-8bdc-e12021b1e9ce"",
-                    ""path"": ""<HID::Arduino LLC Arduino Micro>/stick/y"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Cadence"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
                     ""name"": """",
                     ""id"": ""fb1c6a54-5146-413a-b2cb-45851f509910"",
                     ""path"": ""<Joystick>/stick"",
@@ -237,6 +171,17 @@ public partial class @MasterThesisGameInput : IInputActionCollection2, IDisposab
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""Pause/Unpause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""713d3a04-13a8-4b20-96f3-df952c20d81c"",
+                    ""path"": ""<HID::Arduino LLC Arduino Micro>/button7"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
                     ""action"": ""Pause/Unpause"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
