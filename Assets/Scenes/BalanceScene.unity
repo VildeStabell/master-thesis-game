@@ -671,7 +671,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &621228636
 RectTransform:
   m_ObjectHideFlags: 0
@@ -851,7 +851,7 @@ MonoBehaviour:
   continueButton: {fileID: 2081696080}
   lifeContainer: {fileID: 136854452}
   lifeIndicator: {fileID: 8826972916315309513, guid: f63c85f3e9b17b948979836736bb140d, type: 3}
-  lifeSpacing: -12
+  lifeSpacing: -0.12
   scoreText: 'Score: '
   scoreObject: {fileID: 374992877}
 --- !u!4 &986477679

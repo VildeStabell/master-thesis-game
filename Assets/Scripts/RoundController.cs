@@ -15,7 +15,7 @@ public class RoundController : MonoBehaviour {
     public Button continueButton;
     public GameObject lifeContainer;
     public GameObject lifeIndicator;
-    public float lifeSpacing = -12.0f;
+    public float lifeSpacing = -0.12f;
     public string scoreText = "Score: ";
     public TMP_Text scoreObject;
 
