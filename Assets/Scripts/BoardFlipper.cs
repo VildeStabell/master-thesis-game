@@ -69,6 +69,7 @@ public class BoardFlipper : MonoBehaviour
         if (board != null)
         {
             float angle = ((cadence - eqCadence) / (maxInput - eqCadence)) * maxAngle;
+            angle = angle > -90 ? angle : -90;
 
             Quaternion newRotation = board.transform.rotation;
             newRotation.x = 0;

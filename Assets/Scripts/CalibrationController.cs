@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using TMPro;
 
 public class CalibrationController : MonoBehaviour
@@ -15,7 +15,7 @@ public class CalibrationController : MonoBehaviour
     private InputAction cadenceInput;
     private float sumCadence = 0;
     private float startTime = 0;
-    private float usedTime;
+    private float usedTime = 0;
 
 
     private void Awake()
@@ -43,12 +43,15 @@ public class CalibrationController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (sumCadence > maxCadence)
+        if (sumCadence > maxCadence && usedTime == 0)
         {
+            //eqCad is a number between 0.3-0.9, defined by the prosentage caluclated by sumCadence/usedTime*2
+            //This is because the max of sumCadence/usedTime = 50
+
             usedTime = Time.time - startTime;
-            float eqCad = sumCadence / usedTime;
+            float eqCad = Mathf.Floor((sumCadence / usedTime) * 20 * 60) / 10000 + 0.30f;
             SessionController.sessionCtrl.setEqCadence(eqCad);
-            text.text = eqCad.ToString();
+            SceneManager.LoadScene(sceneName: "MainMenuScene");
         }
 
     }
@@ -70,7 +73,7 @@ public class CalibrationController : MonoBehaviour
             }
             StartCoroutine(readCadence(seconds));
 
-            text.text = sumCadence.ToString() + "/" + maxCadence.ToString();
+            text.text = sumCadence.ToString("F3") + "/" + maxCadence.ToString();
         }
     }
 }
