@@ -1,50 +1,45 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
-using TMPro;
+using UnityEngine.UI;
 
-public class CalibrationController : MonoBehaviour
-{
+public class CalibrationController : MonoBehaviour {
 
     public const float maxCadence = 50f;
     const float readSpeed = 0.2f;
     public MasterThesisGameInput input;
-    public TMP_Text text;
+    public TMP_Text LoadingPercentageText;
+    public Slider loadingBar;
     private InputAction cadenceInput;
     private float sumCadence = 0;
     private float startTime = 0;
     private float usedTime = 0;
 
 
-    private void Awake()
-    {
+    private void Awake() {
         input = new MasterThesisGameInput();
     }
 
-    private void OnEnable()
-    {
+    private void OnEnable() {
         cadenceInput = input.Player.Cadence;
         cadenceInput.Enable();
     }
 
-    private void OnDisable()
-    {
+    private void OnDisable() {
         cadenceInput = input.Player.Cadence;
     }
 
     // Start is called before the first frame update
-    void Start()
-    {
+    void Start() {
         StartCoroutine(readCadence(readSpeed));
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        if (sumCadence > maxCadence && usedTime == 0)
-        {
+    void Update() {
+        if (sumCadence > maxCadence && usedTime == 0) {
             //eqCad is a number between 0.3-0.9, defined by the prosentage caluclated by sumCadence/usedTime*2
             //This is because the max of sumCadence/usedTime = 50
 
@@ -57,23 +52,24 @@ public class CalibrationController : MonoBehaviour
     }
 
 
-    private IEnumerator readCadence(float seconds)
-    {
+    private IEnumerator readCadence(float seconds) {
         yield return new WaitForSeconds(seconds);
-        if (sumCadence < maxCadence)
-        {
+        if (sumCadence < maxCadence) {
             Vector2 cadenceVector = cadenceInput.ReadValue<Vector2>();
             float absX = Mathf.Abs(cadenceVector.x);
             float absY = Mathf.Abs(cadenceVector.y);
             float cadence = Mathf.Max(absX, absY) - Mathf.Min(absY, absX);
             sumCadence += cadence;
-            if (sumCadence > 0 && startTime == 0)
-            {
+            if (sumCadence > 0 && startTime == 0) {
                 startTime = Time.time;
             }
-            StartCoroutine(readCadence(seconds));
 
-            text.text = sumCadence.ToString("F3") + "/" + maxCadence.ToString();
+            float progress = Mathf.Clamp01(sumCadence / maxCadence / .9f);
+            loadingBar.value = progress;
+            LoadingPercentageText.text = progress * 100f + "%";
+
+
+            StartCoroutine(readCadence(seconds));
         }
     }
 }
