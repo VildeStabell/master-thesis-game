@@ -12,20 +12,20 @@ public class RoundController : MonoBehaviour {
     public Button replayButton;
 
     GameObject board;
-    string[] steeringModes = {"AngleRotation"}; // TODO: Get from scene change
+    string[] steeringModes = { "AngleRotation" }; // TODO: Get from scene change
     SteeringMode currentSM;
     GameMode gameMode;
 
     // Start is called before the first frame update
     void Start() {
         endRoundButtons.SetActive(false);
-        switch(gameModeType) {
+        switch (gameModeType) {
             case GameModeEnum.BalanceMode:
                 gameMode = new BalanceMode();
                 break;
         }
-        
-        switch(steeringModes[0]) { // TODO: add randomisation to here and update function
+
+        switch (steeringModes[0]) { // TODO: add randomisation to here and update function
             case "AngleRotation":
                 currentSM = new AngleRotation();
                 break;
@@ -36,7 +36,7 @@ public class RoundController : MonoBehaviour {
 
     // Update is called once per frame
     public void Update() {
-        
+
     }
 
     public void endRound() {
@@ -60,7 +60,7 @@ public class RoundController : MonoBehaviour {
     }
 
     // ---- Event Listeners ----
-    
+
     /**
         Moves the board right according to current steering mode
     */
@@ -78,7 +78,7 @@ public class RoundController : MonoBehaviour {
             currentSM.moveLeft(board, startMovement);
         }
     }
-    
+
     /**
         Reloads the current scene
     */
@@ -89,8 +89,8 @@ public class RoundController : MonoBehaviour {
     /**
         Reloads to the main menu
     */
-    public void returnToMenu() { 
-        SceneManager.LoadScene(sceneName:"MainMenuScene");
+    public void returnToMenu() {
+        SceneManager.LoadScene(sceneName: "MainMenuScene");
     }
 
     // ---- Utility Functions ----
@@ -99,7 +99,7 @@ public class RoundController : MonoBehaviour {
         Used by steeringmodes to run smooth movements
     */
     void startMovement(IEnumerator movementTracker) {
-            StartCoroutine(movementTracker);
+        StartCoroutine(movementTracker);
     }
 
 }

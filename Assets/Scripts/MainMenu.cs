@@ -1,7 +1,7 @@
-using UnityEngine;
 using TMPro;
-using UnityEngine.SceneManagement;
+using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour {
@@ -31,15 +31,15 @@ public class MainMenu : MonoBehaviour {
     }
 
     public void PlayButtonPressed() {
-        switch(chosenGameMode) {
+        switch (chosenGameMode) {
             case GameModeEnum.BalanceMode:
-                SceneManager.LoadScene (sceneName:"BalanceScene");
+                SceneManager.LoadScene(sceneName: "BalanceScene");
                 break;
         }
     }
 
     // ---- Utility functions ----
-    
+
     void openGameDetails(GameMode gameMode) {
         mainMenuButtons.SetActive(false);
         gameModeDetails.SetActive(true);

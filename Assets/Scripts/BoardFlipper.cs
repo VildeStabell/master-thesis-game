@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class BoardFlipper : MonoBehaviour
-{
+public class BoardFlipper : MonoBehaviour {
     const float maxInput = 1.0f;
     const int maxAngle = 90;
     const float readSpeed = 0.2f;
@@ -19,8 +18,7 @@ public class BoardFlipper : MonoBehaviour
     private InputAction cadenceInput;
 
     // Start is called before the first frame update
-    void Start()
-    {
+    void Start() {
         board = gameObject;
         eqCadence = SessionController.sessionCtrl.getEqCadence();
 
@@ -28,33 +26,27 @@ public class BoardFlipper : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
-    {
+    void Update() {
         flipBoard();
     }
 
-    private void Awake()
-    {
+    private void Awake() {
         input = new MasterThesisGameInput();
     }
 
-    private void OnEnable()
-    {
+    private void OnEnable() {
         cadenceInput = input.Player.Cadence;
         cadenceInput.Enable();
     }
 
-    private void OnDisable()
-    {
+    private void OnDisable() {
         cadenceInput = input.Player.Cadence;
     }
 
-    private IEnumerator readCadence(float seconds)
-    {
+    private IEnumerator readCadence(float seconds) {
         yield return new WaitForSeconds(seconds);
 
-        if (board != null)
-        {
+        if (board != null) {
             Vector2 cadenceVector = cadenceInput.ReadValue<Vector2>();
             float absX = Mathf.Abs(cadenceVector.x);
             float absY = Mathf.Abs(cadenceVector.y);
@@ -64,10 +56,8 @@ public class BoardFlipper : MonoBehaviour
         }
     }
 
-    public void flipBoard()
-    {
-        if (board != null)
-        {
+    public void flipBoard() {
+        if (board != null) {
             float angle = ((cadence - eqCadence) / (maxInput - eqCadence)) * maxAngle;
             angle = angle > -90 ? angle : -90;
 
