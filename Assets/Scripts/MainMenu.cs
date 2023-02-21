@@ -16,7 +16,7 @@ public class MainMenu : MonoBehaviour {
 
     public void balanceModeButtonPressed() {
         chosenGameMode = GameModeEnum.BalanceMode;
-        openGameDetails(new BalanceMode());
+        openGameDetails(new BalanceMode(null));
     }
 
     public void backButtonPressed() {

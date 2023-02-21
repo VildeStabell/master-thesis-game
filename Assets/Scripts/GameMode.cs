@@ -5,6 +5,11 @@ using UnityEngine;
 public abstract class GameMode {
 
     /**
+        Get the current score
+    */
+    public abstract int getScore(bool roundOver);
+
+    /**
         Get the prefab from the game mode
     */
     public abstract GameObject getBoardPrefab();
