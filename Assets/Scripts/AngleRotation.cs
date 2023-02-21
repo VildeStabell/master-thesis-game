@@ -6,7 +6,7 @@ using UnityEngine;
 public class AngleRotation : SteeringMode {
     const string NAME = "Angle rotation";
 
-    int[] angles = {30, 45, 60, 90};
+    int[] angles = { 30, 45, 60, 90 };
     bool rotating = false;
     int chosenAngle;
     Action flipBoard;
@@ -20,7 +20,7 @@ public class AngleRotation : SteeringMode {
         Move the board towards the right
     */
     public override void moveRight(GameObject board, Action<IEnumerator> startMovement) {
-        if(!rotating) {
+        if (!rotating) {
             startMovement(RotateY(chosenAngle, board));
         }
     }
@@ -28,8 +28,8 @@ public class AngleRotation : SteeringMode {
     /**
         Move the board towards the left
     */
-    public override void moveLeft(GameObject board, Action<IEnumerator> startMovement){
-        if(!rotating) {
+    public override void moveLeft(GameObject board, Action<IEnumerator> startMovement) {
+        if (!rotating) {
             startMovement(RotateY(-chosenAngle, board));
         }
     }
@@ -40,7 +40,7 @@ public class AngleRotation : SteeringMode {
     public override string getName() {
         return NAME;
     }
-    
+
     /**
         Rotate a set amount of degrees over time
     */
@@ -50,12 +50,12 @@ public class AngleRotation : SteeringMode {
         }
 
         rotating = true;
-        float duration = (Math.Abs(angle)/90)*1.0f;
+        float duration = (Math.Abs(angle) / 90) * 1.0f;
 
         Quaternion startRotation = board.transform.rotation;
         Quaternion endRotation = startRotation * Quaternion.AngleAxis(angle, Vector3.up);
 
-        for(float t = 0 ; t < duration ; t+= Time.deltaTime) {
+        for (float t = 0; t < duration; t += Time.deltaTime) {
             board.transform.rotation = Quaternion.Lerp(startRotation, endRotation, t / duration);
             flipBoard();
             yield return null;

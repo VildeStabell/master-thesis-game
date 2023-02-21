@@ -8,19 +8,26 @@ public class BoardFlipper : MonoBehaviour {
     const int maxAngle = 90;
     const float readSpeed = 0.2f;
     const float rotationSpeed = 0.1f;
-    const float eqBalance = 0.5f; // TODO: TEMPORARY
+    private float eqCadence;
 
     [Range(0, maxInput)]
     public float cadence;
-    public MasterThesisGameInput input;
+    public MasterThesisGameInput inputActions;
 
     private GameObject board;
     private InputAction cadenceInput;
     private RoundController roundCtrl;
+    private PlayerInput playerInput; // Needed to check control scheme
 
+    private void Awake() {
+        inputActions = new MasterThesisGameInput();
+        playerInput = GameObject.Find("RoundController").GetComponent<PlayerInput>();
+    }
+    
     // Start is called before the first frame update
     void Start() {
         board = gameObject;
+        eqCadence = SessionController.sessionCtrl.getEqCadence();
         roundCtrl = GameObject.Find("RoundController").GetComponent<RoundController>();
 
         StartCoroutine(readCadence(readSpeed));
@@ -33,27 +40,25 @@ public class BoardFlipper : MonoBehaviour {
         }
     }
 
-    private void Awake() {
-        input = new MasterThesisGameInput();
-    }
-
-    private void OnEnable() {
-        cadenceInput = input.Player.Cadence; 
+    private void OnEnable(){
+        cadenceInput = inputActions.Player.Cadence; 
         cadenceInput.Enable();
     }
 
     private void OnDisable() {
-        cadenceInput = input.Player.Cadence; 
+        cadenceInput = inputActions.Player.Cadence; 
     }
 
     private IEnumerator readCadence(float seconds) {
-        yield return new WaitForSeconds (seconds);
+        yield return new WaitForSeconds(seconds);
 
         if (board != null) {
-            Vector2 cadenceVector = cadenceInput.ReadValue<Vector2>();
-            float absX = Mathf.Abs(cadenceVector.x);
-            float absY = Mathf.Abs(cadenceVector.y);
-            cadence = Mathf.Max(absX, absY) - Mathf.Min(absY, absX);
+            if (playerInput.currentControlScheme == "Bike") {
+                Vector2 cadenceVector = cadenceInput.ReadValue<Vector2>();
+                float absX = Mathf.Abs(cadenceVector.x);
+                float absY = Mathf.Abs(cadenceVector.y);
+                cadence = Mathf.Max(absX, absY) - Mathf.Min(absY, absX);
+            }
 
             StartCoroutine(readCadence(seconds));
         }
@@ -61,7 +66,8 @@ public class BoardFlipper : MonoBehaviour {
 
     public void flipBoard() {
         if (board != null) {
-            float angle = ((cadence - eqBalance)/(maxInput - eqBalance))*maxAngle;
+            float angle = ((cadence - eqCadence) / (maxInput - eqCadence)) * maxAngle;
+            angle = angle > -90 ? angle : -90;
 
             Quaternion newRotation = board.transform.rotation;
             newRotation.x = 0;

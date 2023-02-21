@@ -104,7 +104,7 @@ public partial class @MasterThesisGameInput : IInputActionCollection2, IDisposab
                     ""path"": ""<HID::Arduino LLC Arduino Micro>/button6"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""Bike"",
                     ""action"": ""MoveRight"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -148,10 +148,76 @@ public partial class @MasterThesisGameInput : IInputActionCollection2, IDisposab
                     ""path"": ""<HID::Arduino LLC Arduino Micro>/trigger"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""Bike"",
                     ""action"": ""MoveLeft"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""1D Axis"",
+                    ""id"": ""f3cefb78-4a93-492c-8c38-0255aab9565a"",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Cadence"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""960d99c7-27a7-4ff9-b7ab-0191a35be2ec"",
+                    ""path"": ""<Joystick>/stick/up"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Bike"",
+                    ""action"": ""Cadence"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""6f237ab6-4812-4fba-b595-39f9c6a06c40"",
+                    ""path"": ""<Joystick>/stick/y"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Bike"",
+                    ""action"": ""Cadence"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""1D Axis"",
+                    ""id"": ""2dfa007c-6985-4a16-8de6-bb6e6625df53"",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Cadence"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""05668107-bebd-4f1c-b09c-90c282c95d46"",
+                    ""path"": ""<HID::Arduino LLC Arduino Micro>/stick/up"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Bike"",
+                    ""action"": ""Cadence"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""d17558d6-f542-4c66-8bdc-e12021b1e9ce"",
+                    ""path"": ""<HID::Arduino LLC Arduino Micro>/stick/y"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Bike"",
+                    ""action"": ""Cadence"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
                 },
                 {
                     ""name"": """",
@@ -159,7 +225,7 @@ public partial class @MasterThesisGameInput : IInputActionCollection2, IDisposab
                     ""path"": ""<Joystick>/stick"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""Bike"",
                     ""action"": ""Cadence"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -717,7 +783,7 @@ public partial class @MasterThesisGameInput : IInputActionCollection2, IDisposab
                 },
                 {
                     ""devicePath"": ""<Mouse>"",
-                    ""isOptional"": false,
+                    ""isOptional"": true,
                     ""isOR"": false
                 }
             ]
@@ -762,6 +828,22 @@ public partial class @MasterThesisGameInput : IInputActionCollection2, IDisposab
                 {
                     ""devicePath"": ""<XRController>"",
                     ""isOptional"": false,
+                    ""isOR"": false
+                }
+            ]
+        },
+        {
+            ""name"": ""Bike"",
+            ""bindingGroup"": ""Bike"",
+            ""devices"": [
+                {
+                    ""devicePath"": ""<HID>"",
+                    ""isOptional"": true,
+                    ""isOR"": false
+                },
+                {
+                    ""devicePath"": ""<HID::Arduino LLC Arduino Micro>"",
+                    ""isOptional"": true,
                     ""isOR"": false
                 }
             ]
@@ -1046,6 +1128,15 @@ public partial class @MasterThesisGameInput : IInputActionCollection2, IDisposab
         {
             if (m_XRSchemeIndex == -1) m_XRSchemeIndex = asset.FindControlSchemeIndex("XR");
             return asset.controlSchemes[m_XRSchemeIndex];
+        }
+    }
+    private int m_BikeSchemeIndex = -1;
+    public InputControlScheme BikeScheme
+    {
+        get
+        {
+            if (m_BikeSchemeIndex == -1) m_BikeSchemeIndex = asset.FindControlSchemeIndex("Bike");
+            return asset.controlSchemes[m_BikeSchemeIndex];
         }
     }
     public interface IPlayerActions

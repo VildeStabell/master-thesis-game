@@ -108,6 +108,9 @@ public class RoundController : MonoBehaviour {
         }
     }
 
+    /**
+        Trigger a score change in the game mode
+    */
     public void triggerScoreChange(GameObject triggeringObject) {
         gameMode.triggerScoreChange(triggeringObject);
     }

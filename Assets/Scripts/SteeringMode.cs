@@ -3,8 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class SteeringMode {    
-    
+public abstract class SteeringMode {
+
     /**
         Move the board towards the right
     */
