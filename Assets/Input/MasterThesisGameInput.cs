@@ -809,6 +809,11 @@ public partial class @MasterThesisGameInput : IInputActionCollection2, IDisposab
                     ""devicePath"": ""<HID>"",
                     ""isOptional"": true,
                     ""isOR"": false
+                },
+                {
+                    ""devicePath"": ""<HID::Arduino LLC Arduino Micro>"",
+                    ""isOptional"": true,
+                    ""isOR"": false
                 }
             ]
         }
