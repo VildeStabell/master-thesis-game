@@ -20,7 +20,7 @@ public class RoundController : MonoBehaviour {
     public TMP_Text scoreObject;
 
     GameObject board;
-    string[] steeringModes = {"AngleRotation"}; // TODO: Get from scene change
+    string[] steeringModes = { "AngleRotation" }; // TODO: Get from scene change
     SteeringMode currentSM;
     GameMode gameMode;
     Stack<GameObject> lifeIndicators = new Stack<GameObject>();
@@ -32,13 +32,16 @@ public class RoundController : MonoBehaviour {
         endRoundButtons.SetActive(false);
         pauseMenu.SetActive(false);
 
-        switch(gameModeType) {
+        switch (gameModeType) {
             case GameModeEnum.BalanceMode:
                 gameMode = new BalanceMode(this);
                 break;
+            case GameModeEnum.ShapesMode:
+                gameMode = new ShapesMode(this);
+                break;
         }
-        
-        switch(steeringModes[0]) { // TODO: add randomisation to here and update function
+
+        switch (steeringModes[0]) { // TODO: add randomisation to here and update function
             case "AngleRotation":
                 currentSM = new AngleRotation();
                 break;
@@ -47,7 +50,7 @@ public class RoundController : MonoBehaviour {
         board = GameObject.Instantiate(gameMode.getBoardPrefab(), new Vector3(0, 0, 0), Quaternion.identity);
 
         // Spawn life indicators
-        for(int i = 0; i < lives; i++) {
+        for (int i = 0; i < lives; i++) {
             GameObject life = Instantiate(lifeIndicator, lifeContainer.transform);
             life.transform.position = lifeContainer.transform.position + new Vector3(i * lifeSpacing, 0, 0);
             life.transform.rotation = new Quaternion(0, 0, 0, 0);
@@ -75,7 +78,7 @@ public class RoundController : MonoBehaviour {
     public void loseLife() {
         lives--;
         Destroy(lifeIndicators.Pop());
-     
+
         if (lives <= 0) {
             endRound();
         }
@@ -86,7 +89,7 @@ public class RoundController : MonoBehaviour {
     }
 
     // ---- Event Listeners ----
-    
+
     /**
         Moves the board right according to current steering mode
     */
@@ -104,7 +107,11 @@ public class RoundController : MonoBehaviour {
             currentSM.moveLeft(board, startMovement);
         }
     }
-    
+
+    public void triggerScoreChange(GameObject triggeringObject) {
+        gameMode.triggerScoreChange(triggeringObject);
+    }
+
     /**
         Reloads the current scene
     */
@@ -115,21 +122,20 @@ public class RoundController : MonoBehaviour {
     /**
         Reloads to the main menu
     */
-    public void returnToMenu() { 
-        SceneManager.LoadScene(sceneName:"MainMenuScene");
+    public void returnToMenu() {
+        SceneManager.LoadScene(sceneName: "MainMenuScene");
     }
 
     /**
         Pauses the game and opens the pause menu
     */
-    public void pauseGame () {
-        if(!paused) {
+    public void pauseGame() {
+        if (!paused) {
             paused = true;
             pauseMenu.SetActive(true);
             continueButton.Select();
             Time.timeScale = 0;
-        }
-        else {
+        } else {
             resumeGame();
         }
     }
@@ -137,7 +143,7 @@ public class RoundController : MonoBehaviour {
     /**
         Unpauses the game and hides the pause menu
     */
-    public void resumeGame () {
+    public void resumeGame() {
         paused = false;
         pauseMenu.SetActive(false);
         Time.timeScale = 1;
@@ -149,7 +155,7 @@ public class RoundController : MonoBehaviour {
         Used by steeringmodes to run smooth movements
     */
     void startMovement(IEnumerator movementTracker) {
-            StartCoroutine(movementTracker);
+        StartCoroutine(movementTracker);
     }
 
 }

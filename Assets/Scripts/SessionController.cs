@@ -9,7 +9,7 @@ public enum GameModeEnum {
 };
 
 public class SessionController : MonoBehaviour {
-    public GameModeEnum[] gameModes = {GameModeEnum.BalanceMode};
+    public GameModeEnum[] gameModes = {GameModeEnum.BalanceMode, GameModeEnum.ShapesMode};
     //public Player player;
     public string[] steeringModes = {"AngleRotation"};
 
