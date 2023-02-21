@@ -8,11 +8,13 @@ using UnityEngine.UI;
 
 public class CalibrationController : MonoBehaviour {
 
+    public const float readSpeed = 0.2f;
     public const float maxCadence = 50f;
-    const float readSpeed = 0.2f;
+    
     public MasterThesisGameInput input;
     public TMP_Text LoadingPercentageText;
     public Slider loadingBar;
+
     private InputAction cadenceInput;
     private float sumCadence = 0;
     private float startTime = 0;
@@ -51,15 +53,16 @@ public class CalibrationController : MonoBehaviour {
 
     }
 
-
     private IEnumerator readCadence(float seconds) {
         yield return new WaitForSeconds(seconds);
+
         if (sumCadence < maxCadence) {
             Vector2 cadenceVector = cadenceInput.ReadValue<Vector2>();
             float absX = Mathf.Abs(cadenceVector.x);
             float absY = Mathf.Abs(cadenceVector.y);
             float cadence = Mathf.Max(absX, absY) - Mathf.Min(absY, absX);
             sumCadence += cadence;
+            
             if (sumCadence > 0 && startTime == 0) {
                 startTime = Time.time;
             }
