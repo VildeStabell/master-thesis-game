@@ -7,9 +7,9 @@ public class FallDetector : MonoBehaviour {
 
     // Start is called before the first frame update
     void Start() {
-        
+
     }
-    
+
     /** 
         Triggers when an object falls below the board
         Destroys the object and detracts a life

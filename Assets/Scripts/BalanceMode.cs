@@ -5,7 +5,7 @@ using UnityEngine;
 public class BalanceMode : GameMode {
     const string NAME = "Balance Mode";
     const string DESC = "Try to keep the board steady for as long as possible.";
-    GameObject boardPrefab = (GameObject) Resources.Load("BalanceBoard", typeof(GameObject)); 
+    GameObject boardPrefab = (GameObject)Resources.Load("BalanceBoard", typeof(GameObject));
 
     private RoundController roundCtrl;
     private int score;

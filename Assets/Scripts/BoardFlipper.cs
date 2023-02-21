@@ -8,7 +8,7 @@ public class BoardFlipper : MonoBehaviour {
     const int maxAngle = 90;
     const float readSpeed = 0.2f;
     const float rotationSpeed = 0.1f;
-    const float eqBalance = 0.5f; // TODO: TEMPORARY
+    private float eqCadence;
 
     [Range(0, maxInput)]
     public float cadence;
@@ -22,6 +22,7 @@ public class BoardFlipper : MonoBehaviour {
     // Start is called before the first frame update
     void Start() {
         board = gameObject;
+        eqCadence = SessionController.sessionCtrl.getEqCadence();
         roundCtrl = GameObject.Find("RoundController").GetComponent<RoundController>();
 
         StartCoroutine(readCadence(readSpeed));
@@ -49,7 +50,7 @@ public class BoardFlipper : MonoBehaviour {
     }
 
     private IEnumerator readCadence(float seconds) {
-        yield return new WaitForSeconds (seconds);
+        yield return new WaitForSeconds(seconds);
 
         if (board != null) {
             if (playerInput.currentControlScheme == "Bike") {
@@ -65,7 +66,8 @@ public class BoardFlipper : MonoBehaviour {
 
     public void flipBoard() {
         if (board != null) {
-            float angle = ((cadence - eqBalance)/(maxInput - eqBalance))*maxAngle;
+            float angle = ((cadence - eqCadence) / (maxInput - eqCadence)) * maxAngle;
+            angle = angle > -90 ? angle : -90;
 
             Quaternion newRotation = board.transform.rotation;
             newRotation.x = 0;
