@@ -8,14 +8,19 @@ using UnityEngine.UI;
 
 public class CalibrationController : MonoBehaviour {
 
+    const float maxInput = 1.0f;
     public const float readSpeed = 0.2f;
     public const float maxCadence = 50f;
-    
+
+    [Range(0, maxInput)]
+    public float cadence;
+
     public MasterThesisGameInput input;
     public TMP_Text LoadingPercentageText;
     public Slider loadingBar;
 
     private InputAction cadenceInput;
+    private PlayerInput playerInput; // Needed to check control scheme
     private float sumCadence = 0;
     private float startTime = 0;
     private float usedTime = 0;
@@ -23,6 +28,7 @@ public class CalibrationController : MonoBehaviour {
 
     private void Awake() {
         input = new MasterThesisGameInput();
+        playerInput = gameObject.GetComponent<PlayerInput>();
     }
 
     private void OnEnable() {
@@ -57,10 +63,13 @@ public class CalibrationController : MonoBehaviour {
         yield return new WaitForSeconds(seconds);
 
         if (sumCadence < maxCadence) {
-            Vector2 cadenceVector = cadenceInput.ReadValue<Vector2>();
-            float absX = Mathf.Abs(cadenceVector.x);
-            float absY = Mathf.Abs(cadenceVector.y);
-            float cadence = Mathf.Max(absX, absY) - Mathf.Min(absY, absX);
+            if (playerInput.currentControlScheme == "Bike") {
+                Vector2 cadenceVector = cadenceInput.ReadValue<Vector2>();
+                float absX = Mathf.Abs(cadenceVector.x);
+                float absY = Mathf.Abs(cadenceVector.y);
+                cadence = Mathf.Max(absX, absY) - Mathf.Min(absY, absX);
+            }
+
             sumCadence += cadence;
             
             if (sumCadence > 0 && startTime == 0) {

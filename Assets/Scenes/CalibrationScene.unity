@@ -451,6 +451,7 @@ GameObject:
   m_Component:
   - component: {fileID: 719200085}
   - component: {fileID: 719200084}
+  - component: {fileID: 719200086}
   m_Layer: 0
   m_Name: CalibrationController
   m_TagString: Untagged
@@ -470,6 +471,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 746cdf76ef2a54e4f826cbb8c0fd7b37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cadence: 0
   LoadingPercentageText: {fileID: 1758832976}
   loadingBar: {fileID: 447813676}
 --- !u!4 &719200085
@@ -487,6 +489,97 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &719200086
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 719200083}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: 7f689a492a07448438061cdef6d72342, type: 3}
+  m_NotificationBehavior: 2
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents:
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 1df770a7-d5ea-43c3-9af7-91bcf55322fe
+    m_ActionName: Player/MoveRight[/Keyboard/d,/Keyboard/rightArrow,/Arduino LLC
+      Arduino Micro/button6]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: a0aa4d3a-46a2-4749-b942-d9bd9248b6e9
+    m_ActionName: Player/MoveLeft[/Keyboard/a,/Keyboard/leftArrow,/Arduino LLC Arduino
+      Micro/trigger]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 161889a8-557b-4dbb-b984-779b603721af
+    m_ActionName: Player/Cadence[/Arduino LLC Arduino Micro/stick/up,/Arduino LLC
+      Arduino Micro/stick/y,/Arduino LLC Arduino Micro/stick]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 80eb379d-7d1b-4960-9c32-1d9a7db4a7f0
+    m_ActionName: Player/Pause/Unpause[/Keyboard/escape,/Arduino LLC Arduino Micro/button7]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 1b82c64a-c7f8-4adb-8ab3-ff1e8f3cb970
+    m_ActionName: UI/Navigate[/Keyboard/w,/Keyboard/upArrow,/Keyboard/s,/Keyboard/downArrow,/Keyboard/a,/Keyboard/leftArrow,/Keyboard/d,/Keyboard/rightArrow,/Arduino
+      LLC Arduino Micro/button2,/Arduino LLC Arduino Micro/button5,/Arduino LLC Arduino
+      Micro/trigger,/Arduino LLC Arduino Micro/button6]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: e248a908-ea61-4e44-8779-f5252606deb1
+    m_ActionName: UI/Submit[/Keyboard/enter,/Arduino LLC Arduino Micro/button8]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 44bf4874-4695-4794-8f8e-067cc539c810
+    m_ActionName: UI/Cancel[/Keyboard/escape]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 04145602-7b2b-4c9f-b118-a4598363c227
+    m_ActionName: UI/Point[/Mouse/position]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: f0033640-c3e4-46f9-9a65-e4783a85887e
+    m_ActionName: UI/Click[/Mouse/leftButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 0993f0f0-03a4-4f9c-a0c3-aa2b7b09c49f
+    m_ActionName: UI/ScrollWheel[/Mouse/scroll]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: dbbdcff5-4edb-46fb-954b-fe7f6f81e423
+    m_ActionName: UI/MiddleClick[/Mouse/middleButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 2fa85293-a8dd-4843-9ffc-8a7afa51c98a
+    m_ActionName: UI/RightClick[/Mouse/rightButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 3ef78b31-67e5-4c87-abae-50430a753317
+    m_ActionName: UI/TrackedDevicePosition
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: e411d487-dda0-41f7-ba56-93acc162ac0b
+    m_ActionName: UI/TrackedDeviceOrientation
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: Player
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 2026000002}
 --- !u!1 &915720638
 GameObject:
   m_ObjectHideFlags: 0

@@ -19,6 +19,11 @@ public class BoardFlipper : MonoBehaviour {
     private RoundController roundCtrl;
     private PlayerInput playerInput; // Needed to check control scheme
 
+    private void Awake() {
+        inputActions = new MasterThesisGameInput();
+        playerInput = GameObject.Find("RoundController").GetComponent<PlayerInput>();
+    }
+    
     // Start is called before the first frame update
     void Start() {
         board = gameObject;
@@ -33,11 +38,6 @@ public class BoardFlipper : MonoBehaviour {
         if (!roundCtrl.isPaused()) {
             flipBoard();
         }
-    }
-
-    private void Awake() {
-        inputActions = new MasterThesisGameInput();
-        playerInput = GameObject.Find("RoundController").GetComponent<PlayerInput>();
     }
 
     private void OnEnable(){
