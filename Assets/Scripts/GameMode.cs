@@ -5,6 +5,11 @@ using UnityEngine;
 public abstract class GameMode {
 
     /**
+        An event listener that changes the score based on the triggering object
+    */
+    public abstract void triggerScoreChange(GameObject triggeringObject);
+
+    /**
         Get the current score
     */
     public abstract int getScore(bool roundOver);

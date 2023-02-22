@@ -13,18 +13,18 @@ public class BalanceMode : GameMode {
     public BalanceMode(RoundController roundController) {
         roundCtrl = roundController;
     }
-    
+
     /**
         Get the current score
     */
     public override int getScore(bool roundOver) {
-        if(!roundOver) {
+        if (!roundOver) {
             score = Mathf.FloorToInt(Time.timeSinceLevelLoad);
         }
 
         return score;
     }
-    
+
     /**
         Get the prefab from the game mode
     */
@@ -44,5 +44,9 @@ public class BalanceMode : GameMode {
     */
     public override string getDescription() {
         return DESC;
+    }
+
+    public override void triggerScoreChange(GameObject triggeringObject) {
+        // Nothing in this game mode
     }
 }
