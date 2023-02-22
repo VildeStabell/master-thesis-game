@@ -14,5 +14,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/BalanceScene.unity
     guid: f85afb175516fb142812f6ba0b0f94fb
+  - enabled: 1
+    path: Assets/Scenes/ShapesScene.unity
+    guid: 80e2dc20b1e1e1d4aa61b274f5feb3a8
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 8dc7b28aa2ecb0b48a8269615726c6f1, type: 2}

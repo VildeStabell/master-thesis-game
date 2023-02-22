@@ -19,6 +19,11 @@ public class MainMenu : MonoBehaviour {
         openGameDetails(new BalanceMode(null));
     }
 
+    public void shapesModeButtonPressed() {
+        chosenGameMode = GameModeEnum.ShapesMode;
+        openGameDetails(new ShapesMode(null));
+    }
+
     public void backButtonPressed() {
         gameModeDetails.SetActive(false);
         mainMenuButtons.SetActive(true);
@@ -34,6 +39,9 @@ public class MainMenu : MonoBehaviour {
         switch (chosenGameMode) {
             case GameModeEnum.BalanceMode:
                 SceneManager.LoadScene(sceneName: "BalanceScene");
+                break;
+            case GameModeEnum.ShapesMode:
+                SceneManager.LoadScene(sceneName: "ShapesScene");
                 break;
         }
     }
