@@ -821,7 +821,6 @@ GameObject:
   m_Component:
   - component: {fileID: 986477679}
   - component: {fileID: 986477678}
-  - component: {fileID: 986477680}
   - component: {fileID: 986477681}
   m_Layer: 0
   m_Name: RoundController
@@ -868,26 +867,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &986477680
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 986477677}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9308b2c77b96d0441a0b38f293dab57a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  objectPrefabs:
-  - {fileID: 5298950646779119033, guid: 5b6ff52932fb96546affd8fa0406432b, type: 3}
-  - {fileID: 38541866411476922, guid: d4853e0a544aad54e980731818aa015e, type: 3}
-  - {fileID: 2406454458558006003, guid: 2556cf97ec91c1d4e84be55b6e117d71, type: 3}
-  spawnHeight: 5
-  startTime: 2
-  startFrequency: 20
-  frequencyIncrease: 0.99
 --- !u!114 &986477681
 MonoBehaviour:
   m_ObjectHideFlags: 0

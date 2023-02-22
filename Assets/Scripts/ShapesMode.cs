@@ -10,8 +10,9 @@ public class ShapesMode : GameMode {
     private int scorePerObject = 10;
 
     private RoundController roundCtrl;
-    private int score;
     private bool isRoundOver = false;
+    private GameObject board;
+    private int score;
 
     public ShapesMode(RoundController roundController) {
         roundCtrl = roundController;
@@ -37,10 +38,11 @@ public class ShapesMode : GameMode {
     }
 
     /**
-        Get the prefab from the game mode
+        Spawns and returns the board
     */
-    public override GameObject getBoardPrefab() {
-        return boardPrefab;
+    public override GameObject spawnBoard() {
+        board = GameObject.Instantiate(boardPrefab, new Vector3(0, 0, 0), Quaternion.identity);
+        return board;
     }
 
     /**
@@ -55,5 +57,11 @@ public class ShapesMode : GameMode {
     */
     public override string getDescription() {
         return DESC;
+    }
+
+    // --- Not Applicable ---
+
+    public override void onLifeLost() {
+        // Nothing in this game mode
     }
 }

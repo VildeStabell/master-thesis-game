@@ -10,14 +10,19 @@ public abstract class GameMode {
     public abstract void triggerScoreChange(GameObject triggeringObject);
 
     /**
+        An event listener that triggers when a life is lost
+    */
+    public abstract void onLifeLost();
+
+    /**
+        Spawns and returns the board
+    */
+    public abstract GameObject spawnBoard();
+
+    /**
         Get the current score
     */
     public abstract int getScore(bool roundOver);
-
-    /**
-        Get the prefab from the game mode
-    */
-    public abstract GameObject getBoardPrefab();
 
     /**
         Get name of game mode
