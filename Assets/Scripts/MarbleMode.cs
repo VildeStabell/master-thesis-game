@@ -5,12 +5,12 @@ using UnityEngine;
 public class MarbleMode : GameMode {
     const string NAME = "Marble Mode";
     const string DESC = "Get the marble into the green hole, while avoiding the red holes.";
+    const string SCORETEXT = "Seconds: ";
     GameObject boardPrefab = (GameObject)Resources.Load("MarbleBoard", typeof(GameObject));
     GameObject marblePrefab = (GameObject)Resources.Load("Marble", typeof(GameObject));
     private Vector3 marbleStartPos = new Vector3(4.45f, 1.21f, -4.42f);
 
     private RoundController roundCtrl;
-    private bool isRoundOver = false;
     private GameObject board;
     private int score;
 
@@ -37,7 +37,7 @@ public class MarbleMode : GameMode {
         Get the current score
     */
     public override int getScore(bool roundOver) {
-        if (!isRoundOver) {
+        if (!roundOver) {
             score = Mathf.FloorToInt(Time.timeSinceLevelLoad);
         }
 
@@ -65,6 +65,13 @@ public class MarbleMode : GameMode {
     */
     public override string getDescription() {
         return DESC;
+    }
+
+    /**
+        Get the unit of scoring
+    */
+    public override string getScoreText() {
+        return SCORETEXT;
     }
 
     // --- Utility functions ---

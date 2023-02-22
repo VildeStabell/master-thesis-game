@@ -24,6 +24,11 @@ public class MainMenu : MonoBehaviour {
         openGameDetails(new ShapesMode(null));
     }
 
+    public void marbleModeButtonPressed() {
+        chosenGameMode = GameModeEnum.MarbleMode;
+        openGameDetails(new MarbleMode(null));
+    }
+
     public void backButtonPressed() {
         gameModeDetails.SetActive(false);
         mainMenuButtons.SetActive(true);
@@ -42,6 +47,9 @@ public class MainMenu : MonoBehaviour {
                 break;
             case GameModeEnum.ShapesMode:
                 SceneManager.LoadScene(sceneName: "ShapesScene");
+                break;
+            case GameModeEnum.MarbleMode:
+                SceneManager.LoadScene(sceneName: "MarbleScene");
                 break;
         }
     }
