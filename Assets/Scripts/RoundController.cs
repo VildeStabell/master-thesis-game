@@ -39,6 +39,9 @@ public class RoundController : MonoBehaviour {
             case GameModeEnum.ShapesMode:
                 gameMode = new ShapesMode(this);
                 break;
+            case GameModeEnum.MarbleMode:
+                gameMode = new MarbleMode(this);
+                break;
         }
 
         switch (steeringModes[0]) { // TODO: add randomisation to here and update function
