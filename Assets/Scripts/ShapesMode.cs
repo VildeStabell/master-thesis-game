@@ -5,14 +5,13 @@ using UnityEngine;
 public class ShapesMode : GameMode {
     const string NAME = "Shapes Mode";
     const string DESC = "Get the objects in the holes. You know, like toddlers do :)";
+    const string SCORETEXT = "Objects: ";
     GameObject boardPrefab = (GameObject)Resources.Load("ShapesBoard", typeof(GameObject));
-
-    private int scorePerObject = 10;
 
     private RoundController roundCtrl;
     private bool isRoundOver = false;
     private GameObject board;
-    private int score;
+    private int score = 0;
 
     public ShapesMode(RoundController roundController) {
         roundCtrl = roundController;
@@ -23,7 +22,7 @@ public class ShapesMode : GameMode {
     */
     public override void triggerScoreChange(GameObject triggeringObject) {
         if (!isRoundOver) {
-            score += scorePerObject;
+            score++;
         }
 
         GameObject.Destroy(triggeringObject);
@@ -57,6 +56,13 @@ public class ShapesMode : GameMode {
     */
     public override string getDescription() {
         return DESC;
+    }
+
+    /**
+        Get the unit of scoring
+    */
+    public override string getScoreText() {
+        return SCORETEXT;
     }
 
     // --- Not Applicable ---

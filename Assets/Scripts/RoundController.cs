@@ -1,10 +1,10 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-using TMPro;
 
 public class RoundController : MonoBehaviour {
     public GameModeEnum gameModeType;
@@ -16,7 +16,7 @@ public class RoundController : MonoBehaviour {
     public GameObject lifeContainer;
     public GameObject lifeIndicator;
     public float lifeSpacing = -0.12f;
-    public string scoreText = "Score: ";
+    public string scoreText;
     public TMP_Text scoreObject;
 
     GameObject board;
@@ -61,6 +61,8 @@ public class RoundController : MonoBehaviour {
             life.transform.rotation = new Quaternion(0, 0, 0, 0);
             lifeIndicators.Push(life);
         }
+
+        scoreText = gameMode.getScoreText();
     }
 
     // Update is called once per frame

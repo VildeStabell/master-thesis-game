@@ -389,7 +389,7 @@ GameObject:
   - component: {fileID: 374992878}
   - component: {fileID: 374992877}
   m_Layer: 5
-  m_Name: Score
+  m_Name: Objects
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -435,7 +435,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Score: '
+  m_text: 'Objects: '
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -544,7 +544,6 @@ MonoBehaviour:
   gameModes: 00000000
   steeringModes:
   - AngleRotation
-  eqCad: 10
   volume: 100
   invert: 0
 --- !u!4 &502869817
