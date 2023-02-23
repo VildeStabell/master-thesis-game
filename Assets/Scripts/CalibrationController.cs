@@ -71,14 +71,14 @@ public class CalibrationController : MonoBehaviour {
             }
 
             sumCadence += cadence;
-            
+
             if (sumCadence > 0 && startTime == 0) {
                 startTime = Time.time;
             }
 
             float progress = Mathf.Clamp01(sumCadence / maxCadence / .9f);
             loadingBar.value = progress;
-            LoadingPercentageText.text = progress * 100f + "%";
+            LoadingPercentageText.text = System.String.Format("{0:F0}%", progress * 100f); ;
 
 
             StartCoroutine(readCadence(seconds));
