@@ -27,17 +27,16 @@ public class RoundController : MonoBehaviour {
     bool roundOver = false;
     bool paused = false;
 
-    // Start is called before the first frame update
-    void Start() {
-        endRoundButtons.SetActive(false);
-        pauseMenu.SetActive(false);
-
+    void Awake() {
         switch (gameModeType) {
             case GameModeEnum.BalanceMode:
                 gameMode = new BalanceMode(this);
                 break;
             case GameModeEnum.ShapesMode:
                 gameMode = new ShapesMode(this);
+                break;
+            case GameModeEnum.MarbleMode:
+                gameMode = new MarbleMode(this);
                 break;
         }
 
@@ -47,7 +46,13 @@ public class RoundController : MonoBehaviour {
                 break;
         }
 
-        board = GameObject.Instantiate(gameMode.getBoardPrefab(), new Vector3(0, 0, 0), Quaternion.identity);
+        board = gameMode.spawnBoard();
+    }
+
+    // Start is called before the first frame update
+    void Start() {
+        endRoundButtons.SetActive(false);
+        pauseMenu.SetActive(false);
 
         // Spawn life indicators
         for (int i = 0; i < lives; i++) {
@@ -80,6 +85,7 @@ public class RoundController : MonoBehaviour {
     public void loseLife() {
         lives--;
         Destroy(lifeIndicators.Pop());
+        gameMode.onLifeLost();
 
         if (lives <= 0) {
             endRound();

@@ -332,6 +332,10 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: e411d487-dda0-41f7-ba56-93acc162ac0b
     m_ActionName: UI/TrackedDeviceOrientation
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 80eb379d-7d1b-4960-9c32-1d9a7db4a7f0
+    m_ActionName: Player/Pause/Unpause[/Keyboard/escape]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -910,7 +914,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3914075336743097177, guid: 691083a3632a4554daac27c363e02bdc, type: 3}
       propertyPath: m_Name
-      value: MultiplayerButtoon
+      value: MultiplayerButton
       objectReference: {fileID: 0}
     - target: {fileID: 3914075336743097182, guid: 691083a3632a4554daac27c363e02bdc, type: 3}
       propertyPath: m_Pivot.x
@@ -1445,11 +1449,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3914075335608110071, guid: 691083a3632a4554daac27c363e02bdc, type: 3}
       propertyPath: m_text
-      value: Maze Mode
+      value: Marble Mode
       objectReference: {fileID: 0}
     - target: {fileID: 3914075336743097177, guid: 691083a3632a4554daac27c363e02bdc, type: 3}
       propertyPath: m_Name
-      value: MazeModeButton
+      value: MarbleModeButton
       objectReference: {fileID: 0}
     - target: {fileID: 3914075336743097182, guid: 691083a3632a4554daac27c363e02bdc, type: 3}
       propertyPath: m_Pivot.x
@@ -1537,7 +1541,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3914075336743097183, guid: 691083a3632a4554daac27c363e02bdc, type: 3}
       propertyPath: m_Interactable
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3914075336743097183, guid: 691083a3632a4554daac27c363e02bdc, type: 3}
       propertyPath: m_Navigation.m_Mode
@@ -1551,6 +1555,14 @@ PrefabInstance:
       propertyPath: m_Navigation.m_SelectOnDown
       value: 
       objectReference: {fileID: 1106191538}
+    - target: {fileID: 3914075336743097183, guid: 691083a3632a4554daac27c363e02bdc, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 375438922}
+    - target: {fileID: 3914075336743097183, guid: 691083a3632a4554daac27c363e02bdc, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: marbleModeButtonPressed
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 691083a3632a4554daac27c363e02bdc, type: 3}
 --- !u!224 &1353609069 stripped

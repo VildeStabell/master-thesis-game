@@ -9,6 +9,7 @@ public class BalanceMode : GameMode {
     GameObject boardPrefab = (GameObject)Resources.Load("BalanceBoard", typeof(GameObject));
 
     private RoundController roundCtrl;
+    private GameObject board;
     private int score;
 
     public BalanceMode(RoundController roundController) {
@@ -27,10 +28,11 @@ public class BalanceMode : GameMode {
     }
 
     /**
-        Get the prefab from the game mode
+        Spawns and returns the board
     */
-    public override GameObject getBoardPrefab() {
-        return boardPrefab;
+    public override GameObject spawnBoard() {
+        board = GameObject.Instantiate(boardPrefab, new Vector3(0, 0, 0), Quaternion.identity);
+        return board;
     }
 
     /**
@@ -47,14 +49,22 @@ public class BalanceMode : GameMode {
         return DESC;
     }
 
+    /**
+        Get the unit of scoring
+    */
     public override string getScoreText() {
         return SCORETEXT;
     }
+
+    // --- Not Applicable ---
 
     public override void triggerScoreChange(GameObject triggeringObject) {
         // Nothing in this game mode
     }
 
+    public override void onLifeLost() {
+        // Nothing in this game mode
+    }
 }
 
 
