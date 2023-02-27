@@ -472,7 +472,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5807f5a848850e24e82287d3d8c39e02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scores: []
+  sd:
+    scores: []
 --- !u!4 &259335512
 Transform:
   m_ObjectHideFlags: 0
@@ -697,8 +698,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7bb3772d513b8e4d8a761f031365bb5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rowUI: {fileID: 0}
-  scoreManager: {fileID: 0}
+  rowUI: {fileID: 5219399820140694015, guid: 94cd433747409f54494eb1edc16c864e, type: 3}
+  scoreManager: {fileID: 259335511}
 --- !u!1 &502869815
 GameObject:
   m_ObjectHideFlags: 0
