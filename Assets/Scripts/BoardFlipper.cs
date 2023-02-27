@@ -1,3 +1,4 @@
+using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,6 +8,7 @@ public class BoardFlipper : MonoBehaviour {
     const float maxInput = 1.0f;
     const int maxAngle = 90;
     const float readSpeed = 0.1f;
+    const int sampleSize = 10; // How many of the previous readings to use when calculating cadence
     private float eqCadence;
 
     [Range(0, maxInput)]
@@ -17,8 +19,7 @@ public class BoardFlipper : MonoBehaviour {
     private InputAction cadenceInput;
     private RoundController roundCtrl;
     private PlayerInput playerInput; // Needed to check control scheme
-    private float oldCadence = 0;
-    private float newCadence = 0;
+    private Queue<float> prevCadence = new Queue<float>();
 
     private void Awake() {
         inputActions = new MasterThesisGameInput();
@@ -30,6 +31,11 @@ public class BoardFlipper : MonoBehaviour {
         board = gameObject;
         eqCadence = SessionController.sessionCtrl.getEqCadence();
         roundCtrl = GameObject.Find("RoundController").GetComponent<RoundController>();
+
+        // Initialize cadence queue
+        for (int i = 0; i < sampleSize; i++) {
+            prevCadence.Enqueue(eqCadence);
+        }
 
         StartCoroutine(readCadence(readSpeed));
     }
@@ -61,8 +67,8 @@ public class BoardFlipper : MonoBehaviour {
                 cadence = Mathf.Max(absX, absY) - Mathf.Min(absY, absX);
             }
 
-            oldCadence = newCadence;
-            newCadence = cadence;
+            prevCadence.Dequeue();
+            prevCadence.Enqueue(cadence);
 
             StartCoroutine(readCadence(seconds));
         }
@@ -70,8 +76,8 @@ public class BoardFlipper : MonoBehaviour {
 
     public void flipBoard() {
         if (board != null) {
-            // For smoother flipping, actual cadence is old + half the difference
-            float smoothCad = oldCadence + (newCadence - oldCadence) / 2;
+            // For smoother flipping, actual cadence is the average of previous readings
+            float smoothCad = prevCadence.ToArray().Sum() / sampleSize;
             
             float angle = ((smoothCad - eqCadence) / (maxInput - eqCadence)) * maxAngle;
             angle = angle > -90 ? angle : -90;
