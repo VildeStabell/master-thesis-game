@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class MarbleMode : GameMode {
@@ -72,6 +73,10 @@ public class MarbleMode : GameMode {
     */
     public override string getScoreText() {
         return SCORETEXT;
+    }
+
+    public override IEnumerable<Score> getSortedScores(ScoreData sd) {
+        return sd.scores.OrderBy(x => x.score);
     }
 
     // --- Utility functions ---

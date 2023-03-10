@@ -474,6 +474,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sd:
     scores: []
+  roundController: {fileID: 986477678}
 --- !u!4 &259335512
 Transform:
   m_ObjectHideFlags: 0
@@ -524,7 +525,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: 25}
+  m_AnchoredPosition: {x: 0, y: 24.999985}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 1.5}
 --- !u!114 &374992877
@@ -693,13 +694,14 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 389366939}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d7bb3772d513b8e4d8a761f031365bb5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   rowUI: {fileID: 5219399820140694015, guid: 94cd433747409f54494eb1edc16c864e, type: 3}
   scoreManager: {fileID: 259335511}
+  scoresUI: {fileID: 1574824359}
 --- !u!1 &502869815
 GameObject:
   m_ObjectHideFlags: 0
@@ -1176,6 +1178,10 @@ MonoBehaviour:
   lifeSpacing: -0.12
   scoreText: 'Score: '
   scoreObject: {fileID: 374992877}
+  scoreManager: {fileID: 259335511}
+  scoresUI: {fileID: 1574824359}
+  scoreContent: {fileID: 389366939}
+  rowUI: {fileID: 5219399820140694015, guid: 94cd433747409f54494eb1edc16c864e, type: 3}
 --- !u!4 &986477679
 Transform:
   m_ObjectHideFlags: 0

@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -18,6 +19,11 @@ public class RoundController : MonoBehaviour {
     public float lifeSpacing = -0.12f;
     public string scoreText;
     public TMP_Text scoreObject;
+    public ScoreManager scoreManager;
+    public GameObject scoresUI;
+    public GameObject scoreContent;
+    public RowUI rowUI;
+
 
     GameObject board;
     string[] steeringModes = { "AngleRotation" }; // TODO: Get from scene change
@@ -47,12 +53,14 @@ public class RoundController : MonoBehaviour {
         }
 
         board = gameMode.spawnBoard();
+        scoreManager.getScoresFromJson();
     }
 
     // Start is called before the first frame update
     void Start() {
         endRoundButtons.SetActive(false);
         pauseMenu.SetActive(false);
+        scoresUI.SetActive(false);
 
         // Spawn life indicators
         for (int i = 0; i < lives; i++) {
@@ -75,6 +83,8 @@ public class RoundController : MonoBehaviour {
         Destroy(board);
         endRoundButtons.SetActive(true);
         replayButton.Select();
+        scoreManager.AddScore(new Score("Player", gameMode.getScore(roundOver)));
+        showHighScores();
         roundOver = true;
     }
 
@@ -160,6 +170,20 @@ public class RoundController : MonoBehaviour {
         Time.timeScale = 1;
     }
 
+    public void showHighScores() {
+
+        scoresUI.SetActive(true);
+        var scores = scoreManager.GetHighScores().ToArray();
+        for (int i = 0; i < scores.Length && i < 3; i++) {
+            Debug.Log(scores[i].highScoreName + scores[i].score.ToString());
+            var row = Instantiate(rowUI, scoreContent.transform).GetComponent<RowUI>();
+            Debug.Log(row);
+            row.rank.text = (i + 1).ToString();
+            row.highScoreName.text = scores[i].highScoreName;
+            row.score.text = scores[i].score.ToString();
+        }
+    }
+
     // ---- Utility Functions ----
 
     /**
@@ -167,6 +191,10 @@ public class RoundController : MonoBehaviour {
     */
     void startMovement(IEnumerator movementTracker) {
         StartCoroutine(movementTracker);
+    }
+
+    public GameMode GetGameMode() {
+        return gameMode;
     }
 
 }

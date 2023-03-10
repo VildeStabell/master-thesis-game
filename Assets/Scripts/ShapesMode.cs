@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class ShapesMode : GameMode {
@@ -64,6 +65,11 @@ public class ShapesMode : GameMode {
     public override string getScoreText() {
         return SCORETEXT;
     }
+
+    public override IEnumerable<Score> getSortedScores(ScoreData sd) {
+        return sd.scores.OrderByDescending(x => x.score);
+    }
+
 
     // --- Not Applicable ---
 

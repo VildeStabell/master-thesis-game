@@ -35,4 +35,5 @@ public abstract class GameMode {
     public abstract string getDescription();
 
     public abstract string getScoreText();
+    public abstract IEnumerable<Score> getSortedScores(ScoreData sd);
 }
