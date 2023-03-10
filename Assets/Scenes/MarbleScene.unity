@@ -1154,7 +1154,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 2
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
@@ -1454,6 +1454,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1112588425}
     m_Modifications:
+    - target: {fileID: 544915037633034363, guid: a1ef8474a7d8a11469265f788678a845, type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 3406156877174271534, guid: a1ef8474a7d8a11469265f788678a845, type: 3}
       propertyPath: m_Name
       value: TiltIcon
@@ -1550,7 +1554,7 @@ PrefabInstance:
   m_SourcePrefab: {fileID: 100100000, guid: a1ef8474a7d8a11469265f788678a845, type: 3}
 --- !u!224 &1612567307 stripped
 RectTransform:
-  m_CorrespondingSourceObject: {fileID: 6017751401187720265, guid: a1ef8474a7d8a11469265f788678a845, type: 3}
+  m_CorrespondingSourceObject: {fileID: 544915037633034363, guid: a1ef8474a7d8a11469265f788678a845, type: 3}
   m_PrefabInstance: {fileID: 1612567306}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1816185531

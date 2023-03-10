@@ -512,11 +512,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 374992875}
   m_CullTransparentMesh: 1
---- !u!224 &483034552 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 7935443852254366436, guid: a1ef8474a7d8a11469265f788678a845, type: 3}
-  m_PrefabInstance: {fileID: 7935443852316856156}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &502869815
 GameObject:
   m_ObjectHideFlags: 0
@@ -1180,7 +1175,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 2
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
@@ -1228,7 +1223,7 @@ RectTransform:
   - {fileID: 136854453}
   - {fileID: 1186897386}
   - {fileID: 621228636}
-  - {fileID: 483034552}
+  - {fileID: 7935443852316856157}
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1855,6 +1850,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1112588425}
     m_Modifications:
+    - target: {fileID: 544915037633034363, guid: a1ef8474a7d8a11469265f788678a845, type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 759161920266416259, guid: a1ef8474a7d8a11469265f788678a845, type: 3}
       propertyPath: m_Name
       value: TiltIcon
@@ -1945,3 +1944,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a1ef8474a7d8a11469265f788678a845, type: 3}
+--- !u!224 &7935443852316856157 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 544915037633034363, guid: a1ef8474a7d8a11469265f788678a845, type: 3}
+  m_PrefabInstance: {fileID: 7935443852316856156}
+  m_PrefabAsset: {fileID: 0}

@@ -54,7 +54,7 @@ public class RoundController : MonoBehaviour {
         pauseMenu.SetActive(false);
 
         // Spawn life indicators
-        float lifeSpacing = -(lifeIndicator.GetComponent<SpriteRenderer>().bounds.size.x / 300);
+        float lifeSpacing = -(lifeIndicator.GetComponent<SpriteRenderer>().bounds.size.x / 350);
 
         for (int i = 0; i < lives; i++) {
             GameObject life = Instantiate(lifeIndicator, lifeContainer.transform);
