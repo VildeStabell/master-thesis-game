@@ -9,10 +9,8 @@ public class TiltIndicator : MonoBehaviour {
     public float greenRange = 10.0f;
 
     public void updateTilt(float angle) {
-        Debug.Log("Tilting to: " + angle); // TODO: remove
-
         foreach (GameObject indicator in indicators) {
-            indicator.transform.rotation = Quaternion.Euler(90, 0, angle);
+            indicator.transform.localEulerAngles = new Vector3(0, 0, angle);
         }
 
         if (Mathf.Abs(angle) > greenRange) {
