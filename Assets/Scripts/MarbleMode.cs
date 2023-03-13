@@ -14,6 +14,8 @@ public class MarbleMode : GameMode {
     private RoundController roundCtrl;
     private GameObject board;
     private int score;
+    private int livesLost;
+    private bool won = false;
 
     public MarbleMode(RoundController roundController) {
         roundCtrl = roundController;
@@ -24,6 +26,7 @@ public class MarbleMode : GameMode {
     */
     public override void triggerScoreChange(GameObject triggeringObject) {
         GameObject.Destroy(triggeringObject);
+        won = true;
         roundCtrl.endRound();
     }
 
@@ -31,6 +34,7 @@ public class MarbleMode : GameMode {
         Respawns the marble
     */
     public override void onLifeLost() {
+        livesLost++;
         spawnMarble();
     }
 
@@ -39,7 +43,11 @@ public class MarbleMode : GameMode {
     */
     public override int getScore(bool roundOver) {
         if (!roundOver) {
-            score = Mathf.FloorToInt(Time.timeSinceLevelLoad);
+            score = Mathf.FloorToInt(Time.timeSinceLevelLoad + 20 * livesLost);
+        }
+
+        if (roundOver && !won) {
+            return 999;
         }
 
         return score;
@@ -88,4 +96,5 @@ public class MarbleMode : GameMode {
         GameObject marble = GameObject.Instantiate(marblePrefab, board.transform);
         marble.transform.RotateAround(board.transform.position, marbleStartPos, board.transform.rotation.y);
     }
+
 }

@@ -83,9 +83,9 @@ public class RoundController : MonoBehaviour {
         Destroy(board);
         endRoundButtons.SetActive(true);
         replayButton.Select();
+        roundOver = true;
         scoreManager.AddScore(new Score("Player", gameMode.getScore(roundOver)));
         scoreManager.showHighScores();
-        roundOver = true;
     }
 
     public GameObject getBoard() {
