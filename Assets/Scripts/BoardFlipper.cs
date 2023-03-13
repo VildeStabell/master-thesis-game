@@ -1,3 +1,4 @@
+using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,8 +7,8 @@ using UnityEngine.InputSystem;
 public class BoardFlipper : MonoBehaviour {
     const float maxInput = 1.0f;
     const int maxAngle = 90;
-    const float readSpeed = 0.2f;
-    const float rotationSpeed = 0.1f;
+    const float readSpeed = 0.1f;
+    const int sampleSize = 10; // How many of the previous readings to use when calculating cadence
     private float eqCadence;
 
     [Range(0, maxInput)]
@@ -18,6 +19,7 @@ public class BoardFlipper : MonoBehaviour {
     private InputAction cadenceInput;
     private RoundController roundCtrl;
     private PlayerInput playerInput; // Needed to check control scheme
+    private Queue<float> prevCadence = new Queue<float>();
 
     private void Awake() {
         inputActions = new MasterThesisGameInput();
@@ -29,6 +31,11 @@ public class BoardFlipper : MonoBehaviour {
         board = gameObject;
         eqCadence = SessionController.sessionCtrl.getEqCadence();
         roundCtrl = GameObject.Find("RoundController").GetComponent<RoundController>();
+
+        // Initialize cadence queue
+        for (int i = 0; i < sampleSize; i++) {
+            prevCadence.Enqueue(eqCadence);
+        }
 
         StartCoroutine(readCadence(readSpeed));
     }
@@ -60,13 +67,19 @@ public class BoardFlipper : MonoBehaviour {
                 cadence = Mathf.Max(absX, absY) - Mathf.Min(absY, absX);
             }
 
+            prevCadence.Dequeue();
+            prevCadence.Enqueue(cadence);
+
             StartCoroutine(readCadence(seconds));
         }
     }
 
     public void flipBoard() {
         if (board != null) {
-            float angle = ((cadence - eqCadence) / (maxInput - eqCadence)) * maxAngle;
+            // For smoother flipping, actual cadence is the average of previous readings
+            float smoothCad = prevCadence.ToArray().Sum() / sampleSize;
+            
+            float angle = ((smoothCad - eqCadence) / (maxInput - eqCadence)) * maxAngle;
             angle = angle > -90 ? angle : -90;
 
             Quaternion newRotation = board.transform.rotation;
@@ -74,7 +87,7 @@ public class BoardFlipper : MonoBehaviour {
             newRotation.z = 0;
             newRotation = Quaternion.AngleAxis(angle, Vector3.right) * newRotation;
 
-            board.transform.rotation = Quaternion.RotateTowards(board.transform.rotation, newRotation, Time.time * rotationSpeed);
+            board.transform.rotation = Quaternion.RotateTowards(board.transform.rotation, newRotation, Time.time * readSpeed);
         }
     }
 }
