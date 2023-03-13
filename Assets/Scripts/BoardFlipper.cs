@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
@@ -20,12 +21,14 @@ public class BoardFlipper : MonoBehaviour {
     private RoundController roundCtrl;
     private PlayerInput playerInput; // Needed to check control scheme
     private Queue<float> prevCadence = new Queue<float>();
+    private Action<float> updateIndicator;
 
     private void Awake() {
         inputActions = new MasterThesisGameInput();
         playerInput = GameObject.Find("RoundController").GetComponent<PlayerInput>();
+        updateIndicator = GameObject.Find("TiltIcon").GetComponent<TiltIndicator>().updateTilt;
     }
-    
+
     // Start is called before the first frame update
     void Start() {
         board = gameObject;
@@ -47,13 +50,13 @@ public class BoardFlipper : MonoBehaviour {
         }
     }
 
-    private void OnEnable(){
-        cadenceInput = inputActions.Player.Cadence; 
+    private void OnEnable() {
+        cadenceInput = inputActions.Player.Cadence;
         cadenceInput.Enable();
     }
 
     private void OnDisable() {
-        cadenceInput = inputActions.Player.Cadence; 
+        cadenceInput = inputActions.Player.Cadence;
     }
 
     private IEnumerator readCadence(float seconds) {
@@ -78,7 +81,7 @@ public class BoardFlipper : MonoBehaviour {
         if (board != null) {
             // For smoother flipping, actual cadence is the average of previous readings
             float smoothCad = prevCadence.ToArray().Sum() / sampleSize;
-            
+
             float angle = ((smoothCad - eqCadence) / (maxInput - eqCadence)) * maxAngle;
             angle = angle > -90 ? angle : -90;
 
@@ -88,6 +91,8 @@ public class BoardFlipper : MonoBehaviour {
             newRotation = Quaternion.AngleAxis(angle, Vector3.right) * newRotation;
 
             board.transform.rotation = Quaternion.RotateTowards(board.transform.rotation, newRotation, Time.time * readSpeed);
+
+            updateIndicator(angle);
         }
     }
 }

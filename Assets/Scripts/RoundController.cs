@@ -15,7 +15,6 @@ public class RoundController : MonoBehaviour {
     public Button continueButton;
     public GameObject lifeContainer;
     public GameObject lifeIndicator;
-    public float lifeSpacing = -0.12f;
     public string scoreText;
     public TMP_Text scoreObject;
 
@@ -55,6 +54,8 @@ public class RoundController : MonoBehaviour {
         pauseMenu.SetActive(false);
 
         // Spawn life indicators
+        float lifeSpacing = -(lifeIndicator.GetComponent<SpriteRenderer>().bounds.size.x / 350);
+
         for (int i = 0; i < lives; i++) {
             GameObject life = Instantiate(lifeIndicator, lifeContainer.transform);
             life.transform.position = lifeContainer.transform.position + new Vector3(i * lifeSpacing, 0, 0);
