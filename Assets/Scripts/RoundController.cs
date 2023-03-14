@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -17,6 +18,8 @@ public class RoundController : MonoBehaviour {
     public GameObject lifeIndicator;
     public string scoreText;
     public TMP_Text scoreObject;
+    public ScoreManager scoreManager;
+    public GameObject scoresUI;
 
     GameObject board;
     string[] steeringModes = { "AngleRotation" }; // TODO: Get from scene change
@@ -52,6 +55,8 @@ public class RoundController : MonoBehaviour {
     void Start() {
         endRoundButtons.SetActive(false);
         pauseMenu.SetActive(false);
+        scoresUI.SetActive(false);
+        scoreManager.getScoresFromJson();
 
         // Spawn life indicators
         float lifeSpacing = -(lifeIndicator.GetComponent<SpriteRenderer>().bounds.size.x / 350);
@@ -72,11 +77,12 @@ public class RoundController : MonoBehaviour {
     }
 
     public void endRound() {
-        Debug.Log("Ending round"); // TODO: transfer scores etc.
         Destroy(board);
         endRoundButtons.SetActive(true);
         replayButton.Select();
         roundOver = true;
+        scoreManager.AddScore(new Score("Player", gameMode.getScore(roundOver)));
+        scoreManager.showHighScores();
     }
 
     public GameObject getBoard() {
@@ -170,4 +176,7 @@ public class RoundController : MonoBehaviour {
         StartCoroutine(movementTracker);
     }
 
+    public GameMode GetGameMode() {
+        return gameMode;
+    }
 }

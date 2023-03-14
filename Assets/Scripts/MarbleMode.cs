@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class MarbleMode : GameMode {
@@ -13,6 +14,8 @@ public class MarbleMode : GameMode {
     private RoundController roundCtrl;
     private GameObject board;
     private int score;
+    private int livesLost;
+    private bool won = false;
 
     public MarbleMode(RoundController roundController) {
         roundCtrl = roundController;
@@ -23,6 +26,7 @@ public class MarbleMode : GameMode {
     */
     public override void triggerScoreChange(GameObject triggeringObject) {
         GameObject.Destroy(triggeringObject);
+        won = true;
         roundCtrl.endRound();
     }
 
@@ -30,6 +34,7 @@ public class MarbleMode : GameMode {
         Respawns the marble
     */
     public override void onLifeLost() {
+        livesLost++;
         spawnMarble();
     }
 
@@ -38,7 +43,11 @@ public class MarbleMode : GameMode {
     */
     public override int getScore(bool roundOver) {
         if (!roundOver) {
-            score = Mathf.FloorToInt(Time.timeSinceLevelLoad);
+            score = Mathf.FloorToInt(Time.timeSinceLevelLoad + 20 * livesLost);
+        }
+
+        if (roundOver && !won) {
+            return 999;
         }
 
         return score;
@@ -72,6 +81,10 @@ public class MarbleMode : GameMode {
     */
     public override string getScoreText() {
         return SCORETEXT;
+    }
+
+    public override IEnumerable<Score> getSortedScores(ScoreData sd) {
+        return sd.scores.OrderBy(x => x.score);
     }
 
     // --- Utility functions ---

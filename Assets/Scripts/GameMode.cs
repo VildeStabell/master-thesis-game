@@ -34,5 +34,13 @@ public abstract class GameMode {
     */
     public abstract string getDescription();
 
+    /**
+        Get the name describing the score type for this game mode
+    */
     public abstract string getScoreText();
+
+    /**
+        Returns the supplied list sorted by the game mode's criteria
+    */
+    public abstract IEnumerable<Score> getSortedScores(ScoreData sd);
 }
