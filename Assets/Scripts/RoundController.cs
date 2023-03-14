@@ -21,8 +21,6 @@ public class RoundController : MonoBehaviour {
     public ScoreManager scoreManager;
     public GameObject scoresUI;
 
-
-
     GameObject board;
     string[] steeringModes = { "AngleRotation" }; // TODO: Get from scene change
     SteeringMode currentSM;
@@ -51,7 +49,6 @@ public class RoundController : MonoBehaviour {
         }
 
         board = gameMode.spawnBoard();
-
     }
 
     // Start is called before the first frame update
@@ -170,8 +167,6 @@ public class RoundController : MonoBehaviour {
         Time.timeScale = 1;
     }
 
-
-
     // ---- Utility Functions ----
 
     /**
@@ -184,5 +179,4 @@ public class RoundController : MonoBehaviour {
     public GameMode GetGameMode() {
         return gameMode;
     }
-
 }

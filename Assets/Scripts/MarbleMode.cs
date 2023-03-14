@@ -96,5 +96,4 @@ public class MarbleMode : GameMode {
         GameObject marble = GameObject.Instantiate(marblePrefab, board.transform);
         marble.transform.RotateAround(board.transform.position, marbleStartPos, board.transform.rotation.y);
     }
-
 }

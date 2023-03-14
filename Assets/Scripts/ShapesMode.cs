@@ -70,7 +70,6 @@ public class ShapesMode : GameMode {
         return sd.scores.OrderByDescending(x => x.score);
     }
 
-
     // --- Not Applicable ---
 
     public override void onLifeLost() {

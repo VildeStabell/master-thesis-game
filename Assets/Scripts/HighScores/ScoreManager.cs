@@ -9,7 +9,6 @@ public class ScoreData {
     public ScoreData() {
         scores = new List<Score>();
     }
-
 }
 
 public class ScoreManager : MonoBehaviour {
@@ -41,15 +40,14 @@ public class ScoreManager : MonoBehaviour {
     }
 
     public void SaveScore() {
-
         var json = JsonUtility.ToJson(sd);
         PlayerPrefs.SetString(roundController.GetGameMode().getName() + "scores", json);
     }
 
     public void showHighScores() {
-
         scoresUI.SetActive(true);
         var scores = GetHighScores().ToArray();
+
         for (int i = 0; i < scores.Length && i < 3; i++) {
             var row = Instantiate(rowUI, scoreContent.transform).GetComponent<RowUI>();
             row.rank.text = (i + 1).ToString();
@@ -57,6 +55,4 @@ public class ScoreManager : MonoBehaviour {
             row.score.text = scores[i].score.ToString();
         }
     }
-
-
 }
