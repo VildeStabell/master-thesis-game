@@ -88,6 +88,17 @@
                     "isPartOfComposite": false
                 },
                 {
+                    "name": "",
+                    "id": "33df0b6c-ab97-4d59-86ef-cd0dfefa0c17",
+                    "path": "<HID::Arduino LLC Arduino Micro>/button5",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MoveRight",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
                     "name": "WASD",
                     "id": "91075511-4661-4a39-ae6a-e8367b99fa27",
                     "path": "Dpad",
@@ -127,6 +138,17 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Bike",
+                    "action": "MoveLeft",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "5d7103e3-8958-48b4-8df0-1b6ade0bad60",
+                    "path": "<HID::Arduino LLC Arduino Micro>/button2",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
                     "action": "MoveLeft",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -560,9 +582,31 @@
                     "isPartOfComposite": true
                 },
                 {
+                    "name": "up",
+                    "id": "a7b8aa69-7a00-40ca-acbb-4c08d6855df3",
+                    "path": "<HID::Arduino LLC Arduino Micro>/trigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Navigate",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
                     "name": "down",
                     "id": "949a50c4-f81d-45f5-97df-143a34139847",
                     "path": "<HID::Arduino LLC Arduino Micro>/button5",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Navigate",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "down",
+                    "id": "8870aeb5-edb4-41ad-a66a-842f4f9295dd",
+                    "path": "<HID::Arduino LLC Arduino Micro>/button6",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -582,9 +626,31 @@
                     "isPartOfComposite": true
                 },
                 {
+                    "name": "left",
+                    "id": "eae2ed25-bd7b-4dd6-a22c-816f98a91fc3",
+                    "path": "<HID::Arduino LLC Arduino Micro>/button2",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Navigate",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
                     "name": "right",
                     "id": "355d6b54-d549-4d25-9515-b91dc7ba5e72",
                     "path": "<HID::Arduino LLC Arduino Micro>/button6",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Navigate",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "right",
+                    "id": "e1dcd985-ba17-4d87-96a3-a11f28224478",
+                    "path": "<HID::Arduino LLC Arduino Micro>/button5",
                     "interactions": "",
                     "processors": "",
                     "groups": "",

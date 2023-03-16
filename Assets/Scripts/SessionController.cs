@@ -31,6 +31,8 @@ public class SessionController : MonoBehaviour {
         } else if (sessionCtrl != this) {
             Destroy(gameObject);
         }
+
+        Time.timeScale = 1; // In case the game was previously paused
     }
 
     // Start is called before the first frame update

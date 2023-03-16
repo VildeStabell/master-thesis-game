@@ -9,7 +9,7 @@ public class BoardFlipper : MonoBehaviour {
     const float maxInput = 1.0f;
     const int maxAngle = 90;
     const float readSpeed = 0.1f;
-    const int sampleSize = 10; // How many of the previous readings to use when calculating cadence
+    const int sampleSize = 20; // How many of the previous readings to use when calculating cadence
     private float eqCadence;
 
     [Range(0, maxInput)]
