@@ -126,7 +126,7 @@ GameObject:
   - component: {fileID: 1519323319409665823}
   m_Layer: 0
   m_Name: ShapesBoard
-  m_TagString: Untagged
+  m_TagString: Board
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

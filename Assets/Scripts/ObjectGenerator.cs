@@ -25,18 +25,18 @@ public class ObjectGenerator : MonoBehaviour {
         StartCoroutine(SpawnAfterSeconds());
     }
 
-    // Update is called once per frame
-    void Update() {
-
-    }
-
+    /**
+        Spawns a new object in a random location
+    */
     void SpawnNewObject() {
         GameObject prefab = objectPrefabs[Random.Range(0, objectPrefabs.Length)];
         float xCoord = Random.Range(spawnMin, spawnMax);
         float zCoord = Random.Range(spawnMin, spawnMax);
+        Vector3 spawnPos = new Vector3(xCoord, spawnHeight, zCoord);
 
         if (board) {
-            Instantiate(prefab, new Vector3(xCoord, spawnHeight, zCoord), Quaternion.identity, board.transform);
+            AudioManager.instance.PlayOneShot(FMODEvents.instance.objectSpawned, spawnPos);
+            Instantiate(prefab, spawnPos, Quaternion.identity, board.transform);
         }
     }
 
