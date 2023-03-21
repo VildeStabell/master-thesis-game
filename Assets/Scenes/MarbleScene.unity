@@ -328,7 +328,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: 24}
+  m_AnchoredPosition: {x: 0, y: 23.999985}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 1.5}
 --- !u!114 &374992877
@@ -925,6 +925,7 @@ MonoBehaviour:
   continueButton: {fileID: 2081696080}
   lifeContainer: {fileID: 136854452}
   lifeIndicator: {fileID: 8826972916315309513, guid: f63c85f3e9b17b948979836736bb140d, type: 3}
+  tiltIcon: {fileID: 1612567308}
   scoreText: 'Score: '
   scoreObject: {fileID: 374992877}
   scoreManager: {fileID: 1122164550}
@@ -1766,6 +1767,11 @@ PrefabInstance:
 --- !u!224 &1612567307 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 544915037633034363, guid: a1ef8474a7d8a11469265f788678a845, type: 3}
+  m_PrefabInstance: {fileID: 1612567306}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1612567308 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6056413866085295031, guid: a1ef8474a7d8a11469265f788678a845, type: 3}
   m_PrefabInstance: {fileID: 1612567306}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1816185531
