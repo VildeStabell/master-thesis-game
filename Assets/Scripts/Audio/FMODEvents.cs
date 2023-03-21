@@ -7,6 +7,7 @@ public class FMODEvents : MonoBehaviour {
     [field: Header("Object SFX")]
     [field: SerializeField] public EventReference objectSpawned { get; private set; }
     [field: SerializeField] public EventReference objectRolling { get; private set; }
+    [field: SerializeField] public EventReference objectSliding { get; private set; }
 
     public static FMODEvents instance { get; private set; }
 

@@ -57,7 +57,14 @@ MonoBehaviour:
       Data2: 1286166348
       Data3: 1858014604
       Data4: -2033820990
-    Path: event:/ObjectMoving
+    Path: event:/ObjectRolling
+  <objectSliding>k__BackingField:
+    Guid:
+      Data1: 1420260856
+      Data2: 1235005644
+      Data3: -448600149
+      Data4: 1444398141
+    Path: event:/ObjectSliding
 --- !u!1 &1749689177093697362
 GameObject:
   m_ObjectHideFlags: 0
