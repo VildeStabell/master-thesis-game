@@ -25,6 +25,9 @@ public class AudioManager : MonoBehaviour {
         RuntimeManager.PlayOneShot(sound, worldPos);
     }
 
+    /**
+        Start an instance to be able to play continous sounds
+    */
     public EventInstance CreateEventInstance(EventReference eventReference) {
         EventInstance eventInstance = RuntimeManager.CreateInstance(eventReference);
         eventInstances.Add(eventInstance);
