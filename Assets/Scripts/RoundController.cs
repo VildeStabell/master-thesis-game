@@ -16,6 +16,7 @@ public class RoundController : MonoBehaviour {
     public Button continueButton;
     public GameObject lifeContainer;
     public GameObject lifeIndicator;
+    public GameObject tiltIcon;
     public string scoreText;
     public TMP_Text scoreObject;
     public ScoreManager scoreManager;
@@ -56,6 +57,7 @@ public class RoundController : MonoBehaviour {
         endRoundButtons.SetActive(false);
         pauseMenu.SetActive(false);
         scoresUI.SetActive(false);
+        tiltIcon.SetActive(true);
         scoreManager.getScoresFromJson();
 
         // Spawn life indicators
@@ -79,6 +81,7 @@ public class RoundController : MonoBehaviour {
     public void endRound() {
         Destroy(board);
         endRoundButtons.SetActive(true);
+        tiltIcon.SetActive(false);
         replayButton.Select();
         roundOver = true;
         scoreManager.AddScore(new Score("Player", gameMode.getScore(roundOver)));
@@ -151,6 +154,7 @@ public class RoundController : MonoBehaviour {
         if (!paused) {
             paused = true;
             pauseMenu.SetActive(true);
+            tiltIcon.SetActive(false);
             continueButton.Select();
             Time.timeScale = 0;
         } else {
@@ -164,6 +168,7 @@ public class RoundController : MonoBehaviour {
     public void resumeGame() {
         paused = false;
         pauseMenu.SetActive(false);
+        tiltIcon.SetActive(true);
         Time.timeScale = 1;
     }
 
