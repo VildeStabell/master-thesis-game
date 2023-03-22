@@ -17,6 +17,7 @@ public class ObjectGenerator : MonoBehaviour {
     public float startTime = 2.0f;
     public float startFrequency = 20.0f;
     public float frequencyIncrease = 0.99f;
+    public float spawnAfterSoundDelay = 0.3f;
 
     // Start is called before the first frame update
     void Start() {
@@ -36,6 +37,7 @@ public class ObjectGenerator : MonoBehaviour {
 
         if (board) {
             AudioManager.instance.PlayOneShot(FMODEvents.instance.objectSpawned, spawnPos);
+            new WaitForSeconds(spawnAfterSoundDelay);
             Instantiate(prefab, spawnPos, Quaternion.identity, board.transform);
         }
     }
