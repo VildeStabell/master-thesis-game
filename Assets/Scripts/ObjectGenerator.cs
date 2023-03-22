@@ -17,6 +17,7 @@ public class ObjectGenerator : MonoBehaviour {
     public float startTime = 2.0f;
     public float startFrequency = 20.0f;
     public float frequencyIncrease = 0.99f;
+    public float spawnAfterSoundDelay = 0.3f;
 
     // Start is called before the first frame update
     void Start() {
@@ -25,18 +26,19 @@ public class ObjectGenerator : MonoBehaviour {
         StartCoroutine(SpawnAfterSeconds());
     }
 
-    // Update is called once per frame
-    void Update() {
-
-    }
-
+    /**
+        Spawns a new object in a random location
+    */
     void SpawnNewObject() {
         GameObject prefab = objectPrefabs[Random.Range(0, objectPrefabs.Length)];
         float xCoord = Random.Range(spawnMin, spawnMax);
         float zCoord = Random.Range(spawnMin, spawnMax);
+        Vector3 spawnPos = new Vector3(xCoord, spawnHeight, zCoord);
 
         if (board) {
-            Instantiate(prefab, new Vector3(xCoord, spawnHeight, zCoord), Quaternion.identity, board.transform);
+            AudioManager.instance.PlayOneShot(FMODEvents.instance.objectSpawned, spawnPos);
+            new WaitForSeconds(spawnAfterSoundDelay);
+            Instantiate(prefab, spawnPos, Quaternion.identity, board.transform);
         }
     }
 
