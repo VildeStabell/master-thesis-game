@@ -61,7 +61,7 @@ public class RoundController : MonoBehaviour {
         scoreManager.getScoresFromJson();
 
         // Spawn life indicators
-        float lifeSpacing = -(lifeIndicator.GetComponent<SpriteRenderer>().bounds.size.x / 350);
+        float lifeSpacing = -(lifeIndicator.GetComponent<SpriteRenderer>().bounds.size.x / 400);
 
         for (int i = 0; i < lives; i++) {
             GameObject life = Instantiate(lifeIndicator, lifeContainer.transform);

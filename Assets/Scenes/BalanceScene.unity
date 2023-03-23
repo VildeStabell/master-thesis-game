@@ -245,7 +245,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -50.799316, y: -37.799988}
+  m_AnchoredPosition: {x: -50.799316, y: -37.80005}
   m_SizeDelta: {x: 72.57056, y: 54}
   m_Pivot: {x: -0.2, y: -0.2}
 --- !u!1001 &200872634
@@ -943,6 +943,7 @@ MonoBehaviour:
   startTime: 2
   startFrequency: 20
   frequencyIncrease: 0.99
+  spawnAfterSoundDelay: 0.3
 --- !u!114 &986477681
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1395,7 +1396,7 @@ MonoBehaviour:
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
-  m_ScreenMatchMode: 0
+  m_ScreenMatchMode: 1
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
