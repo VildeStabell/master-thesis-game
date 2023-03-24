@@ -16,6 +16,7 @@ public class MarbleMode : GameMode {
     private int score;
     private int livesLost;
     private bool won = false;
+    private float spawnAfterSoundDelay = 10.0f;
 
     public MarbleMode(RoundController roundController) {
         roundCtrl = roundController;
@@ -93,6 +94,7 @@ public class MarbleMode : GameMode {
         Spawn the marble in the correct place on the board
     */
     private void spawnMarble() {
+        AudioManager.instance.PlayOneShot(FMODEvents.instance.marbleSpawned, marbleStartPos);
         GameObject marble = GameObject.Instantiate(marblePrefab, board.transform);
         marble.transform.RotateAround(board.transform.position, marbleStartPos, board.transform.rotation.y);
     }

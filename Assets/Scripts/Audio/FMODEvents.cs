@@ -9,6 +9,9 @@ public class FMODEvents : MonoBehaviour {
     [field: SerializeField] public EventReference objectRolling { get; private set; }
     [field: SerializeField] public EventReference objectSliding { get; private set; }
 
+    [field: Header("Marble SFX")]
+    [field: SerializeField] public EventReference marbleSpawned { get; private set; }
+
     public static FMODEvents instance { get; private set; }
 
     private void Awake() {

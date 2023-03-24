@@ -65,6 +65,13 @@ MonoBehaviour:
       Data3: -448600149
       Data4: 1444398141
     Path: event:/ObjectSliding
+  <marbleSpawned>k__BackingField:
+    Guid:
+      Data1: -238952515
+      Data2: 1179527168
+      Data3: -918281287
+      Data4: 1614241102
+    Path: event:/MarbleSpawned
 --- !u!1 &1749689177093697362
 GameObject:
   m_ObjectHideFlags: 0
@@ -110,3 +117,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d82d2627ae07804086e6f8bd1f8120f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  masterVolume: 1
+  musicVolume: 1
+  SFXVolume: 1
