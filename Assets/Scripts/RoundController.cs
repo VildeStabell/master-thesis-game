@@ -113,7 +113,7 @@ public class RoundController : MonoBehaviour {
     */
     public void moveRight() {
         if (board && !paused) {
-            currentSM.moveRight(board, startMovement);
+            currentSM.moveRight(board, startCoroutine);
         }
     }
 
@@ -122,7 +122,7 @@ public class RoundController : MonoBehaviour {
     */
     public void moveLeft() {
         if (board && !paused) {
-            currentSM.moveLeft(board, startMovement);
+            currentSM.moveLeft(board, startCoroutine);
         }
     }
 
@@ -174,13 +174,13 @@ public class RoundController : MonoBehaviour {
         }
     }
 
-    // ---- Utility Functions ----
+    // ---- Other Functions ----
 
     /**
-        Used by steeringmodes to run smooth movements
+        Used by steeringmodes to run corountines from other classes
     */
-    void startMovement(IEnumerator movementTracker) {
-        StartCoroutine(movementTracker);
+    public void startCoroutine(IEnumerator corountine) {
+        StartCoroutine(corountine);
     }
 
     public GameMode GetGameMode() {

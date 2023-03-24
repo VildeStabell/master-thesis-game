@@ -16,7 +16,7 @@ public class MarbleMode : GameMode {
     private int score;
     private int livesLost;
     private bool won = false;
-    private float spawnAfterSoundDelay = 10.0f;
+    private float spawnAfterSoundDelay = 1.0f;
 
     public MarbleMode(RoundController roundController) {
         roundCtrl = roundController;
@@ -36,7 +36,7 @@ public class MarbleMode : GameMode {
     */
     public override void onLifeLost() {
         livesLost++;
-        spawnMarble();
+        roundCtrl.startCoroutine(spawnMarble());
     }
 
     /**
@@ -59,7 +59,7 @@ public class MarbleMode : GameMode {
     */
     public override GameObject spawnBoard() {
         board = GameObject.Instantiate(boardPrefab, new Vector3(0, 0, 0), Quaternion.identity);
-        spawnMarble();
+        roundCtrl.startCoroutine(spawnMarble());
         return board;
     }
 
@@ -93,8 +93,9 @@ public class MarbleMode : GameMode {
     /**
         Spawn the marble in the correct place on the board
     */
-    private void spawnMarble() {
+    private IEnumerator spawnMarble() {
         AudioManager.instance.PlayOneShot(FMODEvents.instance.marbleSpawned, marbleStartPos);
+        yield return new WaitForSeconds(spawnAfterSoundDelay);
         GameObject marble = GameObject.Instantiate(marblePrefab, board.transform);
         marble.transform.RotateAround(board.transform.position, marbleStartPos, board.transform.rotation.y);
     }
