@@ -72,6 +72,20 @@ MonoBehaviour:
       Data3: -918281287
       Data4: 1614241102
     Path: event:/MarbleSpawned
+  <levelCompleted>k__BackingField:
+    Guid:
+      Data1: -1849860218
+      Data2: 1253695563
+      Data3: -1626665814
+      Data4: 1902260770
+    Path: event:/LevelComplete
+  <gameOver>k__BackingField:
+    Guid:
+      Data1: 2117324977
+      Data2: 1202333370
+      Data3: -1816390992
+      Data4: -1897875971
+    Path: event:/GameOver
 --- !u!1 &1749689177093697362
 GameObject:
   m_ObjectHideFlags: 0

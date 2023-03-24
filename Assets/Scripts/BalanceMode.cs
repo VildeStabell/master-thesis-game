@@ -12,6 +12,7 @@ public class BalanceMode : GameMode {
     private RoundController roundCtrl;
     private GameObject board;
     private int score;
+    private bool endSoundPlayed = false;
 
     public BalanceMode(RoundController roundController) {
         roundCtrl = roundController;
@@ -23,6 +24,9 @@ public class BalanceMode : GameMode {
     public override int getScore(bool roundOver) {
         if (!roundOver) {
             score = Mathf.FloorToInt(Time.timeSinceLevelLoad);
+        } else if (!endSoundPlayed) {
+            AudioManager.instance.PlayOneShot(FMODEvents.instance.levelCompleted, Vector3.zero);
+            endSoundPlayed = true;
         }
 
         return score;

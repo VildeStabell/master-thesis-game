@@ -12,6 +12,10 @@ public class FMODEvents : MonoBehaviour {
     [field: Header("Marble SFX")]
     [field: SerializeField] public EventReference marbleSpawned { get; private set; }
 
+    [field: Header("Gameplay SFX")]
+    [field: SerializeField] public EventReference levelCompleted { get; private set; }
+    [field: SerializeField] public EventReference gameOver { get; private set; }
+
     public static FMODEvents instance { get; private set; }
 
     private void Awake() {
