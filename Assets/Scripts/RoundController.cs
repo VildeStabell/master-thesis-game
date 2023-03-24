@@ -166,10 +166,12 @@ public class RoundController : MonoBehaviour {
         Unpauses the game and hides the pause menu
     */
     public void resumeGame() {
-        paused = false;
-        pauseMenu.SetActive(false);
-        tiltIcon.SetActive(true);
-        Time.timeScale = 1;
+        if (pauseMenu.activeSelf) {
+            paused = false;
+            pauseMenu.SetActive(false);
+            tiltIcon.SetActive(true);
+            Time.timeScale = 1;
+        }
     }
 
     // ---- Utility Functions ----

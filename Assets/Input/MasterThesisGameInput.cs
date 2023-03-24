@@ -269,7 +269,7 @@ public partial class @MasterThesisGameInput : IInputActionCollection2, IDisposab
                     ""path"": ""<HID::Arduino LLC Arduino Micro>/button7"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""Bike"",
                     ""action"": ""Pause/Unpause"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false

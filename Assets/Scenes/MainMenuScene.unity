@@ -333,7 +333,19 @@ MonoBehaviour:
     m_ActionId: e411d487-dda0-41f7-ba56-93acc162ac0b
     m_ActionName: UI/TrackedDeviceOrientation
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1284994030}
+        m_TargetAssemblyTypeName: SettingsMenu, Assembly-CSharp
+        m_MethodName: close
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 80eb379d-7d1b-4960-9c32-1d9a7db4a7f0
     m_ActionName: Player/Pause/Unpause[/Keyboard/escape]
   m_NeverAutoSwitchControlSchemes: 0
