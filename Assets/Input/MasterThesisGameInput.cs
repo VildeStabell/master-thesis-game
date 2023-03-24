@@ -269,7 +269,7 @@ public partial class @MasterThesisGameInput : IInputActionCollection2, IDisposab
                     ""path"": ""<HID::Arduino LLC Arduino Micro>/button7"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""Bike"",
                     ""action"": ""Pause/Unpause"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -604,31 +604,9 @@ public partial class @MasterThesisGameInput : IInputActionCollection2, IDisposab
                     ""isPartOfComposite"": true
                 },
                 {
-                    ""name"": ""up"",
-                    ""id"": ""a7b8aa69-7a00-40ca-acbb-4c08d6855df3"",
-                    ""path"": ""<HID::Arduino LLC Arduino Micro>/trigger"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Navigate"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
                     ""name"": ""down"",
                     ""id"": ""949a50c4-f81d-45f5-97df-143a34139847"",
                     ""path"": ""<HID::Arduino LLC Arduino Micro>/button5"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Navigate"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""down"",
-                    ""id"": ""8870aeb5-edb4-41ad-a66a-842f4f9295dd"",
-                    ""path"": ""<HID::Arduino LLC Arduino Micro>/button6"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -648,31 +626,9 @@ public partial class @MasterThesisGameInput : IInputActionCollection2, IDisposab
                     ""isPartOfComposite"": true
                 },
                 {
-                    ""name"": ""left"",
-                    ""id"": ""eae2ed25-bd7b-4dd6-a22c-816f98a91fc3"",
-                    ""path"": ""<HID::Arduino LLC Arduino Micro>/button2"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Navigate"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
                     ""name"": ""right"",
                     ""id"": ""355d6b54-d549-4d25-9515-b91dc7ba5e72"",
                     ""path"": ""<HID::Arduino LLC Arduino Micro>/button6"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Navigate"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""right"",
-                    ""id"": ""e1dcd985-ba17-4d87-96a3-a11f28224478"",
-                    ""path"": ""<HID::Arduino LLC Arduino Micro>/button5"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
