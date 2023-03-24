@@ -1689,6 +1689,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 3914075336743097182, guid: 691083a3632a4554daac27c363e02bdc, type: 3}
   m_PrefabInstance: {fileID: 1589387138}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1589387140 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3914075336743097183, guid: 691083a3632a4554daac27c363e02bdc, type: 3}
+  m_PrefabInstance: {fileID: 1589387138}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1607386082
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2000,6 +2011,10 @@ PrefabInstance:
       propertyPath: previousMenu
       value: 
       objectReference: {fileID: 1186897385}
+    - target: {fileID: 2116474534, guid: d51a8bb027c96d64bad9865570f9d6a3, type: 3}
+      propertyPath: selectOnCloseButton
+      value: 
+      objectReference: {fileID: 1589387140}
     - target: {fileID: 7035504203043036158, guid: d51a8bb027c96d64bad9865570f9d6a3, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0

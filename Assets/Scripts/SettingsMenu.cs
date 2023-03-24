@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class SettingsMenu : MonoBehaviour {
     public GameObject settingsMenu;
     public GameObject previousMenu;
+    public Button selectOnCloseButton;
     public Slider firstSlider;
 
     public void Start() {
@@ -28,6 +29,7 @@ public class SettingsMenu : MonoBehaviour {
         if (settingsMenu.activeSelf) {
             settingsMenu.SetActive(false);
             previousMenu.SetActive(true);
+            selectOnCloseButton.Select();
         }
     }
 }
