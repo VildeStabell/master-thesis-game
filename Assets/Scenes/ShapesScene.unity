@@ -1084,7 +1084,7 @@ MonoBehaviour:
   - {fileID: 38541866411476922, guid: d4853e0a544aad54e980731818aa015e, type: 3}
   - {fileID: 2406454458558006003, guid: 2556cf97ec91c1d4e84be55b6e117d71, type: 3}
   spawnHeight: 5
-  startTime: 2
+  startTime: 10
   startFrequency: 20
   frequencyIncrease: 0.99
   spawnAfterSoundDelay: 0.3

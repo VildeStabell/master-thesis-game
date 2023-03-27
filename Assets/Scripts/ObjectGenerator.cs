@@ -14,7 +14,7 @@ public class ObjectGenerator : MonoBehaviour {
 
     // Tweakable from inspector
     public float spawnHeight = 5;
-    public float startTime = 2.0f;
+    public float startTime = 10.0f;
     public float startFrequency = 20.0f;
     public float frequencyIncrease = 0.99f;
     public float spawnAfterSoundDelay = 0.3f;
