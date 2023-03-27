@@ -50,42 +50,56 @@ MonoBehaviour:
       Data2: 1153983788
       Data3: -396444012
       Data4: -376262435
-    Path: event:/ObjectSpawned
+    Path: event:/SFX/ObjectSpawned
   <objectRolling>k__BackingField:
     Guid:
       Data1: -316686850
       Data2: 1286166348
       Data3: 1858014604
       Data4: -2033820990
-    Path: event:/ObjectRolling
+    Path: event:/SFX/ObjectRolling
   <objectSliding>k__BackingField:
     Guid:
       Data1: 1420260856
       Data2: 1235005644
       Data3: -448600149
       Data4: 1444398141
-    Path: event:/ObjectSliding
+    Path: event:/SFX/ObjectSliding
   <marbleSpawned>k__BackingField:
     Guid:
       Data1: -238952515
       Data2: 1179527168
       Data3: -918281287
       Data4: 1614241102
-    Path: event:/MarbleSpawned
+    Path: event:/SFX/MarbleSpawned
   <levelCompleted>k__BackingField:
     Guid:
       Data1: -1849860218
       Data2: 1253695563
       Data3: -1626665814
       Data4: 1902260770
-    Path: event:/LevelComplete
+    Path: event:/SFX/LevelComplete
   <gameOver>k__BackingField:
     Guid:
       Data1: 2117324977
       Data2: 1202333370
       Data3: -1816390992
       Data4: -1897875971
-    Path: event:/GameOver
+    Path: event:/SFX/GameOver
+  <menuMusic>k__BackingField:
+    Guid:
+      Data1: 615238633
+      Data2: 1254780138
+      Data3: -207983475
+      Data4: -610101519
+    Path: event:/Music/MenuMusic
+  <levelMusic>k__BackingField:
+    Guid:
+      Data1: -1841003664
+      Data2: 1305744391
+      Data3: -196831052
+      Data4: -1891714057
+    Path: event:/Music/GameMusic
 --- !u!1 &1749689177093697362
 GameObject:
   m_ObjectHideFlags: 0

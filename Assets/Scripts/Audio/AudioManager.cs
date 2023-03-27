@@ -21,6 +21,8 @@ public class AudioManager : MonoBehaviour {
 
     private List<EventInstance> eventInstances;
 
+    private EventInstance musicEventInstance;
+
     private void Awake() {
         if (instance != null) {
             Debug.LogError("Found more than one Audio Manager in the scene ");
@@ -57,6 +59,15 @@ public class AudioManager : MonoBehaviour {
     }
 
     /**
+        Begin playing music
+    */
+    public void InitializeMusic(EventReference musicEventReference) {
+        musicEventInstance = CreateEventInstance(musicEventReference);
+        musicEventInstance.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(Vector3.zero));
+        musicEventInstance.start();
+    }
+
+    /**
         Stop and release any created eventInstances
     */
     private void CleanUp() {
@@ -64,6 +75,9 @@ public class AudioManager : MonoBehaviour {
             eventInstance.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
             eventInstance.release();
         }
+
+        musicEventInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+        musicEventInstance.release();
     }
 
     /**

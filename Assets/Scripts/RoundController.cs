@@ -71,6 +71,8 @@ public class RoundController : MonoBehaviour {
         }
 
         scoreText = gameMode.getScoreText();
+
+        AudioManager.instance.InitializeMusic(FMODEvents.instance.levelMusic);
     }
 
     // Update is called once per frame
