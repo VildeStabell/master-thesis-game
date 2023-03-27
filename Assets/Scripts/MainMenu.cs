@@ -38,6 +38,7 @@ public class MainMenu : MonoBehaviour {
     public void Start() {
         gameModeDetails.SetActive(false);
         mainMenuButtons.SetActive(true);
+        AudioManager.instance.InitializeMusic(FMODEvents.instance.menuMusic);
     }
 
     public void PlayButtonPressed() {

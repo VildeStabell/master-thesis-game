@@ -11,6 +11,7 @@ public class ShapesMode : GameMode {
 
     private RoundController roundCtrl;
     private bool isRoundOver = false;
+    private bool endSoundPlayed = false;
     private GameObject board;
     private int score = 0;
 
@@ -34,6 +35,17 @@ public class ShapesMode : GameMode {
     */
     public override int getScore(bool roundOver) {
         isRoundOver = roundOver;
+
+        if (isRoundOver && !endSoundPlayed) {
+            if (score == 0) {
+                AudioManager.instance.PlayOneShot(FMODEvents.instance.gameOver, Vector3.zero);
+            } else {
+                AudioManager.instance.PlayOneShot(FMODEvents.instance.levelCompleted, Vector3.zero);
+            }
+
+            endSoundPlayed = true;
+        }
+
         return score;
     }
 
