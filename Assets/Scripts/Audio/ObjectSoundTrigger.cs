@@ -43,7 +43,7 @@ public class ObjectSoundTrigger : MonoBehaviour {
     */
     private void UpdateSound() {
         // Start sound if the object is moving and is touching the board
-        if (((Mathf.Abs(rb.velocity.x) > 0.1f) || (Mathf.Abs(rb.velocity.y) > 0.1f) || (Mathf.Abs(rb.velocity.z) > 0.1f)) && onBoard) {
+        if (((Mathf.Abs(rb.velocity.x) > 0.05f) || (Mathf.Abs(rb.velocity.y) > 0.05f) || (Mathf.Abs(rb.velocity.z) > 0.05f)) && onBoard) {
             // Choose type of sound based on type of movement
             EventInstance sound;
             if ((Mathf.Abs(rb.angularVelocity.x) > 0.5f) || (Mathf.Abs(rb.angularVelocity.y) > 0.5f) || (Mathf.Abs(rb.angularVelocity.z) > 0.5f)) {

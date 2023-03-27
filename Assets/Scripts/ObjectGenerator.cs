@@ -29,7 +29,7 @@ public class ObjectGenerator : MonoBehaviour {
     /**
         Spawns a new object in a random location
     */
-    void SpawnNewObject() {
+    private IEnumerator SpawnNewObject() {
         GameObject prefab = objectPrefabs[Random.Range(0, objectPrefabs.Length)];
         float xCoord = Random.Range(spawnMin, spawnMax);
         float zCoord = Random.Range(spawnMin, spawnMax);
@@ -37,7 +37,7 @@ public class ObjectGenerator : MonoBehaviour {
 
         if (board) {
             AudioManager.instance.PlayOneShot(FMODEvents.instance.objectSpawned, spawnPos);
-            new WaitForSeconds(spawnAfterSoundDelay);
+            yield return new WaitForSeconds(spawnAfterSoundDelay);
             Instantiate(prefab, spawnPos, Quaternion.identity, board.transform);
         }
     }
@@ -56,7 +56,7 @@ public class ObjectGenerator : MonoBehaviour {
         spawnMin = -sideLength / 2;
         spawnMax = sideLength / 2;
 
-        SpawnNewObject();
+        StartCoroutine(SpawnNewObject());
 
         StartCoroutine(SpawnAfterSeconds(startFrequency));
     }
@@ -68,7 +68,7 @@ public class ObjectGenerator : MonoBehaviour {
         yield return new WaitForSeconds(seconds);
 
         if (board) {
-            SpawnNewObject();
+            StartCoroutine(SpawnNewObject());
             StartCoroutine(SpawnAfterSeconds(seconds * frequencyIncrease));
         }
     }

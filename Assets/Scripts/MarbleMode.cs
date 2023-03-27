@@ -16,6 +16,8 @@ public class MarbleMode : GameMode {
     private int score;
     private int livesLost;
     private bool won = false;
+    private float spawnAfterSoundDelay = 1.0f;
+    private bool endSoundPlayed = false;
 
     public MarbleMode(RoundController roundController) {
         roundCtrl = roundController;
@@ -35,7 +37,7 @@ public class MarbleMode : GameMode {
     */
     public override void onLifeLost() {
         livesLost++;
-        spawnMarble();
+        roundCtrl.startCoroutine(spawnMarble());
     }
 
     /**
@@ -44,10 +46,16 @@ public class MarbleMode : GameMode {
     public override int getScore(bool roundOver) {
         if (!roundOver) {
             score = Mathf.FloorToInt(Time.timeSinceLevelLoad + 20 * livesLost);
-        }
+        } else if (!won) {
+            if (!endSoundPlayed) {
+                AudioManager.instance.PlayOneShot(FMODEvents.instance.gameOver, Vector3.zero);
+                endSoundPlayed = true;
+            }
 
-        if (roundOver && !won) {
             return 999;
+        } else if (!endSoundPlayed) {
+            AudioManager.instance.PlayOneShot(FMODEvents.instance.levelCompleted, Vector3.zero);
+            endSoundPlayed = true;
         }
 
         return score;
@@ -58,7 +66,7 @@ public class MarbleMode : GameMode {
     */
     public override GameObject spawnBoard() {
         board = GameObject.Instantiate(boardPrefab, new Vector3(0, 0, 0), Quaternion.identity);
-        spawnMarble();
+        roundCtrl.startCoroutine(spawnMarble());
         return board;
     }
 
@@ -92,8 +100,15 @@ public class MarbleMode : GameMode {
     /**
         Spawn the marble in the correct place on the board
     */
-    private void spawnMarble() {
-        GameObject marble = GameObject.Instantiate(marblePrefab, board.transform);
-        marble.transform.RotateAround(board.transform.position, marbleStartPos, board.transform.rotation.y);
+    private IEnumerator spawnMarble() {
+        if (board) {
+            AudioManager.instance.PlayOneShot(FMODEvents.instance.marbleSpawned, marbleStartPos);
+            yield return new WaitForSeconds(spawnAfterSoundDelay);
+        }
+        // This statement is repeated in case the board got destroyed after the wait
+        if (board) {
+            GameObject marble = GameObject.Instantiate(marblePrefab, board.transform);
+            marble.transform.RotateAround(board.transform.position, marbleStartPos, board.transform.rotation.y);
+        }
     }
 }
