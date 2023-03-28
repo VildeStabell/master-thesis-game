@@ -62,9 +62,19 @@ public class AudioManager : MonoBehaviour {
         Begin playing music
     */
     public void InitializeMusic(EventReference musicEventReference) {
-        musicEventInstance = CreateEventInstance(musicEventReference);
+        musicEventInstance = RuntimeManager.CreateInstance(musicEventReference);
         musicEventInstance.set3DAttributes(FMODUnity.RuntimeUtils.To3DAttributes(Vector3.zero));
         musicEventInstance.start();
+    }
+
+    /**
+        Pause or resume the sound effects that were playing before this method was called
+        True pauses, false unpauses
+    */
+    public void PauseSounds(bool pause) {
+        foreach (EventInstance eventInstance in eventInstances) {
+            eventInstance.setPaused(pause);
+        }
     }
 
     /**
