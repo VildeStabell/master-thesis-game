@@ -159,6 +159,7 @@ public class RoundController : MonoBehaviour {
             tiltIcon.SetActive(false);
             continueButton.Select();
             Time.timeScale = 0;
+            AudioManager.instance.PauseSounds(true);
         } else {
             resumeGame();
         }
@@ -173,6 +174,7 @@ public class RoundController : MonoBehaviour {
             pauseMenu.SetActive(false);
             tiltIcon.SetActive(true);
             Time.timeScale = 1;
+            AudioManager.instance.PauseSounds(false);
         }
     }
 
