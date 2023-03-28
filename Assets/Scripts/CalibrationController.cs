@@ -78,14 +78,12 @@ public class CalibrationController : MonoBehaviour {
             }
 
             if (startTime != 0) {
-                float currentEq = Mathf.Floor((sumCadence / (Time.time - startTime)) * 20) / 100;
-                Debug.Log(currentEq);
-                if (currentEq < 0.35f) {
+                if (cadence <= 0.40f) {
                     instructionText.text = "For better exercice results, you might want to speed up a bit";
-                } else if (currentEq > 0.35f && currentEq < 0.80f) {
+                } else if (cadence > 0.40f && cadence < 0.97f) {
                     instructionText.text = "Well done! Keep going";
                 } else {
-                    instructionText.text = "You might want to slow down a bit";
+                    instructionText.text = "You might want to slow down a bit, or increse the resistance";
                 }
             }
 
