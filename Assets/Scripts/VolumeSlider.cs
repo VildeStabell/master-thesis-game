@@ -29,7 +29,7 @@ public class VolumeSlider : MonoBehaviour {
                 volumeSlider.value = AudioManager.instance.musicVolume;
                 break;
             case VolumeType.SFX:
-                volumeSlider.value = AudioManager.instance.SFXVolume;
+                volumeSlider.value = AudioManager.instance.sfxVolume;
                 break;
             default:
                 Debug.LogWarning("Volume Type not supported: " + volumeType);
@@ -46,7 +46,7 @@ public class VolumeSlider : MonoBehaviour {
                 AudioManager.instance.musicVolume = volumeSlider.value;
                 break;
             case VolumeType.SFX:
-                AudioManager.instance.SFXVolume = volumeSlider.value;
+                AudioManager.instance.sfxVolume = volumeSlider.value;
                 break;
             default:
                 Debug.LogWarning("Volume Type not supported: " + volumeType);

@@ -13,7 +13,7 @@ public class AudioManager : MonoBehaviour {
     [Range(0, 1)]
     public float musicVolume = 1;
     [Range(0, 1)]
-    public float SFXVolume = 1;
+    public float sfxVolume = 1;
 
     private Bus masterBus;
     private Bus musicBus;
@@ -34,12 +34,21 @@ public class AudioManager : MonoBehaviour {
         masterBus = RuntimeManager.GetBus("bus:/");
         musicBus = RuntimeManager.GetBus("bus:/Music");
         sfxBus = RuntimeManager.GetBus("bus:/SFX");
+
+        // Get volume settings from json
+        var json = PlayerPrefs.GetString("volume");
+        VolumeSettings settings = JsonUtility.FromJson<VolumeSettings>(json);
+        if (settings != null) {
+            masterVolume = settings.masterVolume;
+            musicVolume = settings.musicVolume;
+            sfxVolume = settings.sfxVolume;
+        }
     }
 
     private void Update() {
         masterBus.setVolume(masterVolume);
         musicBus.setVolume(musicVolume);
-        sfxBus.setVolume(SFXVolume);
+        sfxBus.setVolume(sfxVolume);
     }
 
     /**
@@ -85,5 +94,10 @@ public class AudioManager : MonoBehaviour {
     */
     private void OnDestroy() {
         CleanUp();
+
+        //Save volume settings
+        VolumeSettings volumeSettings = new VolumeSettings(masterVolume, musicVolume, sfxVolume);
+        var json = JsonUtility.ToJson(volumeSettings);
+        PlayerPrefs.SetString("volume", json);
     }
 }
