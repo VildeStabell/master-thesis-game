@@ -86,6 +86,20 @@ MonoBehaviour:
       Data3: -1816390992
       Data4: -1897875971
     Path: event:/SFX/GameOver
+  <uiMovement>k__BackingField:
+    Guid:
+      Data1: -222386296
+      Data2: 1258181320
+      Data3: -1098062962
+      Data4: 1256707772
+    Path: event:/SFX/UIMovement
+  <uiClick>k__BackingField:
+    Guid:
+      Data1: -1757221653
+      Data2: 1173050848
+      Data3: -652563820
+      Data4: -1138606732
+    Path: event:/SFX/UIClick
   <menuMusic>k__BackingField:
     Guid:
       Data1: 615238633
@@ -147,4 +161,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   masterVolume: 1
   musicVolume: 1
-  SFXVolume: 1
+  sfxVolume: 1

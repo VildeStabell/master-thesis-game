@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class VolumeSlider : MonoBehaviour {
 
@@ -38,6 +39,8 @@ public class VolumeSlider : MonoBehaviour {
     }
 
     public void OnSliderValueChanged() {
+        AudioManager.instance.PlayOneShot(FMODEvents.instance.uiMovement, Vector3.zero);
+
         switch (volumeType) {
             case VolumeType.MASTER:
                 AudioManager.instance.masterVolume = volumeSlider.value;
