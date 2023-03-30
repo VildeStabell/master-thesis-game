@@ -9,18 +9,20 @@ public class BoardFlipper : MonoBehaviour {
     const float maxInput = 1.0f;
     const int maxAngle = 90;
     const float readSpeed = 0.1f;
-    const int sampleSize = 20; // How many of the previous readings to use when calculating cadence
+    const int sampleSize = 40; // How many of the previous readings to use when calculating cadence
     private float eqCadence;
 
     [Range(0, maxInput)]
     public float cadence;
+    public float maxCadDifference = 0.3f;
     public MasterThesisGameInput inputActions;
 
     private GameObject board;
     private InputAction cadenceInput;
     private RoundController roundCtrl;
     private PlayerInput playerInput; // Needed to check control scheme
-    private Queue<float> prevCadence = new Queue<float>();
+    private Queue<float> prevCadenceQueue = new Queue<float>();
+    private float prevCadence = 999.0f;
     private Action<float> updateIndicator;
 
     private void Awake() {
@@ -37,7 +39,7 @@ public class BoardFlipper : MonoBehaviour {
 
         // Initialize cadence queue
         for (int i = 0; i < sampleSize; i++) {
-            prevCadence.Enqueue(eqCadence);
+            prevCadenceQueue.Enqueue(eqCadence);
         }
 
         StartCoroutine(readCadence(readSpeed));
@@ -70,8 +72,18 @@ public class BoardFlipper : MonoBehaviour {
                 cadence = Mathf.Max(absX, absY) - Mathf.Min(absY, absX);
             }
 
-            prevCadence.Dequeue();
-            prevCadence.Enqueue(cadence);
+            float newCadence = cadence;
+
+            // Mitigating false readings
+            if(prevCadence == 999.0f || prevCadence < 0.3 || (Mathf.Abs(cadence - prevCadence) < maxCadDifference)) {
+                prevCadence = cadence;
+            }
+            else {
+                newCadence = prevCadence;
+            }
+
+            prevCadenceQueue.Dequeue();
+            prevCadenceQueue.Enqueue(newCadence);
 
             StartCoroutine(readCadence(seconds));
         }
@@ -80,7 +92,7 @@ public class BoardFlipper : MonoBehaviour {
     public void flipBoard() {
         if (board != null) {
             // For smoother flipping, actual cadence is the average of previous readings
-            float smoothCad = prevCadence.ToArray().Sum() / sampleSize;
+            float smoothCad = prevCadenceQueue.ToArray().Sum() / sampleSize;
 
             float angle = ((smoothCad - eqCadence) / (maxInput - eqCadence)) * maxAngle;
             angle = angle > -90 ? angle : -90;
