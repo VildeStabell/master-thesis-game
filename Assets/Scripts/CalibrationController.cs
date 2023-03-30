@@ -18,6 +18,7 @@ public class CalibrationController : MonoBehaviour {
     public MasterThesisGameInput input;
     public TMP_Text LoadingPercentageText;
     public Slider loadingBar;
+    public TMP_Text instructionText;
 
     private InputAction cadenceInput;
     private PlayerInput playerInput; // Needed to check control scheme
@@ -74,6 +75,16 @@ public class CalibrationController : MonoBehaviour {
 
             if (sumCadence > 0 && startTime == 0) {
                 startTime = Time.time;
+            }
+
+            if (startTime != 0) {
+                if (cadence <= 0.40f) {
+                    instructionText.text = "For better exercice results, you might want to speed up a bit";
+                } else if (cadence > 0.40f && cadence < 0.97f) {
+                    instructionText.text = "Well done! Keep going";
+                } else {
+                    instructionText.text = "You might want to slow down a bit, or increase the resistance";
+                }
             }
 
             float progress = Mathf.Clamp01(sumCadence / maxCadence / .9f);
