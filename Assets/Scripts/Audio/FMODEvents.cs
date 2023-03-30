@@ -16,6 +16,10 @@ public class FMODEvents : MonoBehaviour {
     [field: SerializeField] public EventReference levelCompleted { get; private set; }
     [field: SerializeField] public EventReference gameOver { get; private set; }
 
+    [field: Header("UI SFX")]
+    [field: SerializeField] public EventReference uiMovement { get; private set; }
+    [field: SerializeField] public EventReference uiClick { get; private set; }
+
     [field: Header("Music")]
     [field: SerializeField] public EventReference menuMusic { get; private set; }
     [field: SerializeField] public EventReference levelMusic { get; private set; }
