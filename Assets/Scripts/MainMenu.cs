@@ -55,6 +55,11 @@ public class MainMenu : MonoBehaviour {
         }
     }
 
+    public void QuitGame() {
+        Application.Quit();
+        Debug.Log("Game is exiting"); // Will not actually quit in editor
+    }
+
     // ---- Utility functions ----
 
     void openGameDetails(GameMode gameMode) {
