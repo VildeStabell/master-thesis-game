@@ -79,11 +79,11 @@ public class CalibrationController : MonoBehaviour {
 
             if (startTime != 0) {
                 if (cadence <= 0.40f) {
-                    instructionText.text = "For better exercice results, you might want to speed up a bit";
+                    instructionText.text = "Speed up!";
                 } else if (cadence > 0.40f && cadence < 0.97f) {
                     instructionText.text = "Well done! Keep going";
                 } else {
-                    instructionText.text = "You might want to slow down a bit, or increase the resistance";
+                    instructionText.text = "Increase resistance!";
                 }
             }
 
